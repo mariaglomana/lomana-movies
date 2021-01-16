@@ -1,35 +1,37 @@
-import * as React from "react";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Link from "@material-ui/core/Link";
-import verticalLogo from "./assets/images/logo_vertical.png";
-import {ReactComponent as PlanetLogo } from "./assets/images/planet_logo.svg";
+import React from "react";
+// import React, {useContext} from "react";
+import "./assets/css/index.css";
+import MainApp from "./pages/MainApp";
+import Landing from "./pages/Landing";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
-function Copyright() {
-  return (
-    <Box style={{marginTop: 30}} >
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+// import UserContext from "./contexts/user";
 
-      <Typography variant="body2" color="textSecondary">
-        {"Code test for Frontend Position at "}
-        <Link href="https://www.planetdataset.com/" target="_blank" rel="noreferrer" aria-label="go to PlanetDataset">
-          <PlanetLogo style={{height: 15, width: "auto", marginBottom: -2}}/>
-        </Link>
-        {`  - ${new Date().getFullYear()}`}.
-      </Typography>
-    </Box>
 
+const App =() => {
+  // const { loading, user, set } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
+  // console.log(user);
+  // const isLoggedIn = user.id === "-1" ? false : true;
+  return ( <Router>
+    <div className="App">
+      <Switch>
+        <Route exact path="/" component={MainApp} />
+        <Route exact path="/welcome" component={Landing} />
+        <Route exact path="/sign_in" component={SignIn} />
+        <Route exact path="/sign_up" component={SignUp} />
+      </Switch>
+    </div>
+
+
+  </Router>
   );
-}
+};
 
-export default function App() {
-  return (
-    <Container maxWidth="md" >
-      <Box style={{flex: 1, verticalAlign: "center", marginTop: 40}} >
-
-        <img src={verticalLogo} alt="Logo"/>
-        <Copyright />
-      </Box>
-    </Container>
-  );
-}
+export default App;

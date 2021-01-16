@@ -1,21 +1,34 @@
-import * as React from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./assets/theme";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
 import "./assets/css/index.css";
 import App from "./App";
+
+// import {UserProvider} from "./contexts/user";
+
+
 // import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+// // redux toolkit
+// import { Provider } from "react-redux";
+// import store from "./redux/store";
+
+const routing = (
+  <ThemeProvider theme={theme}>
+    {/* <UserProvider> */}
+
+    <CssBaseline />
+    <App />
+    {/* </UserProvider> */}
+
+  </ThemeProvider>
+
+
 );
+ReactDOM.render(routing, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
