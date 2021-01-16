@@ -1,0 +1,7 @@
+
+/.yarn/**
+/.npm/**
+/lib/**
+/node_modules/**
+/tests/fixtures/**
+/tmp/**
