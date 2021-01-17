@@ -3,16 +3,8 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
-import verticalLogo from "../assets/images/logo_vertical.png";
-import {ReactComponent as PlanetLogo } from "../assets/images/planet_logo.svg";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
+import verticalLogo from "../../assets/images/logo_vertical.png";
+import {ReactComponent as PlanetLogo } from "../../assets/images/planet_logo.svg";
 
 
 function Copyright() {

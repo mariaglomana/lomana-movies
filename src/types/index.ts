@@ -13,3 +13,7 @@ export interface UserState {
   }
   
 export type UserField = keyof User;
+
+//Navigation
+export type NavKeys = "profile" | "search" | "rate" ;
+
