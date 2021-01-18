@@ -2,7 +2,7 @@ import React from "react";
 // import React, {useContext} from "react";
 import "./assets/css/index.css";
 import MainApp from "./pages/MainApp";
-import Landing from "./pages/Landing";
+import Welcome from "./pages/Welcome";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 
@@ -23,7 +23,7 @@ const App =() => {
     <div className="App">
       <Switch>
         <Route exact path="/" component={MainApp} />
-        <Route exact path="/welcome" component={Landing} />
+        <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/sign_in" component={SignIn} />
         <Route exact path="/sign_up" component={SignUp} />
       </Switch>
