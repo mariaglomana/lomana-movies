@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Link from "@material-ui/core/Link";
 import horizontalLogo from "../assets/images/logo_horiz.png";
 
-const LogoImg = styled.img`
+export const LogoImg = styled.img`
 width: 200px;
 height: "auto";
 `;
