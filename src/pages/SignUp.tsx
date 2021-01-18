@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import {startCase} from "lodash";
 import clsx from "clsx";
-import { Link as RouterLink} from "react-router-dom";
+import { Link as RouterLink, useHistory} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -16,6 +16,8 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import theme from "../assets/theme";
+import {User, UserAPIResponse} from "../types";
+import {registerUser} from "../api";
 import useForm from "../hooks/useForm";
 import LogoImg from "../components/HeaderLogo";
 import {ErrorMessage} from "../components";
@@ -93,13 +95,10 @@ interface State {
 
 const SignUp: React.FC =() => {
   const classes = useStyles();
+  let history = useHistory();
   const inputSubmit = useRef<HTMLInputElement>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
-  function onSubmitForm(state: State) {
-    //send data
-    alert(JSON.stringify(state, null, 2));
-  }
+  const [submitErrorMsg, setSubmitErrorMsg] = useState<string>("");
 
   const { state, disable, handleOnChange, handleOnSubmit } = useForm(
     stateSchema,
@@ -119,6 +118,25 @@ const SignUp: React.FC =() => {
     inputSubmit.current && inputSubmit.current.click();
   };
 
+  const manageAPIResponse =(response: UserAPIResponse| undefined ) => {
+    if (response && response.data){
+      localStorage.setItem("planet-auth_token", response.data.token );
+      history.push("/");
+    } else if (response && response.error){
+      setSubmitErrorMsg(response.error);
+    }
+  };
+
+  async function onSubmitForm(state: State) {
+    const formattedState: Omit<User, "id"> = {
+      first_name: state.first_name.value,
+      last_name: state.last_name.value,
+      email: state.email.value,
+      password: state.password.value,
+    };
+    const response= await registerUser(formattedState);
+    manageAPIResponse(response);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -217,15 +235,14 @@ const SignUp: React.FC =() => {
             />
             <ErrorMessage error={state.password.error}/>
           </FormControl>
-          <Box mt={2}>
+          <Box mb={2}>
+            <Typography variant="body2" color="error" >{submitErrorMsg}</Typography>
           </Box>       
           <Box className={clsx(classes.margin, "col")}>
             {/* Submit button with the styles */}
             <Button
               disabled={disable}
               fullWidth
-              // component={RouterLink}
-              // to="/"
               variant="contained"
               color="primary"
               aria-label="sign up"
