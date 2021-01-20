@@ -12,18 +12,22 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
 
-import theme from "../assets/theme";
+// import theme from "../assets/theme";
 import {Home, Search, Rate, Profile} from "../pages/mainApp";
 import {NavItem, HeaderLogo} from "../components";
 
 const drawerWidth = 240;
 const history = createBrowserHistory();
 
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
     justifyContent: "space-between",
     background: "rgba(148, 148, 148,0.06)",
+    widht: "100%",
+    position: "absolute",
+    top: 0,
   },
   flex: {
     flex: 1
@@ -43,14 +47,17 @@ const styles = theme => ({
   },
   barContent: {
     flex: 1,
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+  },
+  white: {
+    backgroundColor: "#ffffff",
+  },
 });
 
 const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
-  <Fragment>
-    <AppBar className={classes.aboveDrawer} color="#ffffff">
-      <Toolbar className={classes.barContent}>
+  <div >
+    <AppBar className={classes.aboveDrawer} color="primary" position="fixed">
+      <Toolbar className={classes.barContent }>
         <IconButton
           className={classes.menuButton}
           color="inherit"
@@ -63,7 +70,7 @@ const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
       </Toolbar>
     </AppBar>
     <div className={classes.toolbarMargin} />
-  </Fragment>
+  </div >
 ));
 
 const MyDrawer = withStyles(styles)(
@@ -90,7 +97,7 @@ const MyDrawer = withStyles(styles)(
         </List>
       </Drawer>
       <main className={classes.content}>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route path="/search" component={Search} />
         <Route path="/rate" component={Rate} />
         <Route path="/profile" component={Profile} />

@@ -67,7 +67,7 @@ const Welcome: React.FC =() => {
           Create new account
       </Button>
       <Typography variant="body2" color="textPrimary" className={classes.marginBottom}>
-        Already Have An Account?     
+        Already have an account?     
         <Button
           component={RouterLink}
           to="/sign_in"

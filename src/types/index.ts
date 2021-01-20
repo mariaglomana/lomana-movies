@@ -47,9 +47,12 @@ export type MoviePreviewData = Pick<APIMovieData, "id"| "title"| "year"| "poster
 
 export type MovieDataKey = keyof MovieData;
 
-
-
-
 //NAVIGATION
 export type NavKeys = "profile" | "search" | "rate" ;
+
+export interface IRoute {
+  path: string;
+  component: any;
+  routes?: IRoute[];
+}
 

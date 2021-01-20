@@ -1,33 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "./assets/theme";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+import theme from "./assets/theme";
 import "./assets/css/index.css";
 import App from "./App";
-
-// import {UserProvider} from "./contexts/user";
-
-
 // import reportWebVitals from './reportWebVitals';
 
-// // redux toolkit
-// import { Provider } from "react-redux";
-// import store from "./redux/store";
-
 const routing = (
-  <ThemeProvider theme={theme}>
-    {/* <UserProvider> */}
-
-    <CssBaseline />
-    <App />
-    {/* </UserProvider> */}
-
-  </ThemeProvider>
-
-
+  <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>
 );
+
 ReactDOM.render(routing, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function

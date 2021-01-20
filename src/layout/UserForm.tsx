@@ -92,7 +92,7 @@ const typeMap = {
     "validationFormStateSchema": validationStateSchema,
     "title": "Sign up",
     "secondary_btn": {
-      "text": "Already Have An Account?",
+      "text": "Already have an account?",
       "action": "Sign in"
     }
   },
@@ -151,7 +151,7 @@ const UserForm: React.FC<UserFormProps> =({type}) => {
   const manageAPIResponse =(response: UserAPIResponse| undefined ) => {
     if (response && response.data){
       localStorage.setItem("planet_auth_token", response.data.token );
-      history.push("/");
+      history.push("/home");
     } else if (response && response.error){
       setSubmitErrorMsg(response.error);
     } else {
