@@ -113,7 +113,6 @@ function AppBarInteraction({ classes, variant }) {
 
   const onItemClick = title => () => {
     setTitle(title);
-    console.log("title", title);
     setDrawer(variant === "temporary" ? false : drawer);
     setDrawer(!drawer);
   };

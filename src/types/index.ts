@@ -42,6 +42,13 @@ export interface APIMovieData {
   "poster_url": string;
 }
 
+export interface MoviesAPIParams {
+  page?: number;
+  size?: number;
+  order?: MovieDataKey;
+  direction?: "asc" | "desc";
+}
+
 export type MovieData = Omit<APIMovieData, "budget" | "gross_income" | "url">;
 export type MoviePreviewData = Pick<APIMovieData, "id"| "title"| "year"| "poster_url">;
 
