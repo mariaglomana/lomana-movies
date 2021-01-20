@@ -24,10 +24,6 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     justifyContent: "space-between",
-    background: "rgba(148, 148, 148,0.06)",
-    widht: "100%",
-    position: "absolute",
-    top: 0,
   },
   flex: {
     flex: 1
