@@ -16,7 +16,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import theme from "../assets/theme";
-import {User, UserAPIResponse} from "../types";
+import {User, APIResponse} from "../types";
 import {getFormattedFormState} from "../utils";
 import {registerUser, loginUser} from "../api";
 import useForm from "../hooks/useForm";
@@ -148,7 +148,7 @@ const UserForm: React.FC<UserFormProps> =({type}) => {
     inputSubmit.current && inputSubmit.current.click();
   };
 
-  const manageAPIResponse =(response: UserAPIResponse| undefined ) => {
+  const manageAPIResponse =(response: APIResponse| undefined ) => {
     if (response && response.data){
       localStorage.setItem("planet_auth_token", response.data.token );
       history.push("/home");

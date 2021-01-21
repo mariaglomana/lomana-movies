@@ -19,7 +19,7 @@ interface UserDataAPIResponse {
   token: string;
 }
 
-export interface UserAPIResponse {
+export interface APIResponse {
   success: boolean;
   data?: UserDataAPIResponse;
   error?: string;

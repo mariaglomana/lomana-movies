@@ -1,8 +1,8 @@
 import axios from "axios";
-import {User, UserAPIResponse} from "../types";
+import {User, APIResponse} from "../types";
 import {BASE_URL, BASE_POST_USER_DATA} from "../host_backend";
 
-async function registerUser (user: Omit<User, "id">): Promise<UserAPIResponse| undefined> {
+async function registerUser (user: Omit<User, "id">): Promise<APIResponse| undefined> {
   try {
     const response = await axios({
       method: "post",

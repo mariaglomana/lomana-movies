@@ -97,7 +97,6 @@ const MyDrawer = withStyles(styles)(
         <Route path="/movies" component={Movies} />
         <Route path="/rate" component={Rate} />
         <Route path="/profile" component={Profile} />
-
       </main>
     </Router>
   )

@@ -1,8 +1,8 @@
 import axios from "axios";
-import {User, UserAPIResponse} from "../types";
+import {User, APIResponse} from "../types";
 import {BASE_URL, BASE_POST_USER_DATA} from "../host_backend";
 
-async function loginUser (user: Omit<User, "id"| "first_name"| "last_name">): Promise<UserAPIResponse| undefined> {
+async function loginUser (user: Omit<User, "id"| "first_name"| "last_name">): Promise<APIResponse| undefined> {
   try {
     const response = await axios({
       method: "post",

@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import {ImageGridList} from "../../layout";
 import {MoviePreviewData } from "../../types";
 import {PageContainer, RateGroupButtons} from "../../components";
-import {getUnratedRandomMovie } from "../../api";
+import {getUnratedRandomMovie, registerRate } from "../../api";
 
 interface RateProps {
 
@@ -18,6 +18,7 @@ const Rate: React.FC<RateProps> =() => {
   const [rate, setRate] = useState< number | undefined>(undefined);
 
   const handleSaveRate = () => {
+    const response = registerRate(unratedMovie[0].id, rate as number);
     //post rate
     loadRandomMovie();
     setRate(undefined);
