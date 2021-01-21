@@ -1,4 +1,4 @@
-import {map} from "lodash";
+import {map, sortBy} from "lodash";
 
 const PREVIEW_MOVIE_KEYS = ["id", "title", "year", "poster_url"];
 
@@ -13,7 +13,8 @@ const getFormattedPreviewMovies = (rawMovies)=> {
     }, {});
   
   const formattedPreviewMovies = map(rawMovies, getFormattedMovie );
-  return formattedPreviewMovies;
+  const orderedByTitlePreviewMovies = sortBy(formattedPreviewMovies, ["title"]);
+  return orderedByTitlePreviewMovies;
 };
 
 export default getFormattedPreviewMovies;

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { Router, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -13,7 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
 
 // import theme from "../assets/theme";
-import {Home, Search, Rate, Profile} from "../pages/mainApp";
+import {Home, Movies, Rate, Profile} from "../pages/mainApp";
 import {NavItem, HeaderLogo} from "../components";
 
 const drawerWidth = 240;
@@ -87,14 +87,14 @@ const MyDrawer = withStyles(styles)(
         />
         <List>
           <NavItem name="home" onClose={onClose}/>
-          <NavItem name="search" onClose={onClose}/>
+          <NavItem name="movies" onClose={onClose}/>
           <NavItem name="rate" onClose={onClose}/>
           <NavItem name="profile" onClose={onClose}/>
         </List>
       </Drawer>
       <main className={classes.content}>
         <Route exact path="/home" component={Home} />
-        <Route path="/search" component={Search} />
+        <Route path="/movies" component={Movies} />
         <Route path="/rate" component={Rate} />
         <Route path="/profile" component={Profile} />
 

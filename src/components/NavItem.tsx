@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import SearchIcon from "@material-ui/icons/Search";
+import TheatersIcon from "@material-ui/icons/Theaters";
 import StarRateIcon from "@material-ui/icons/StarRate";
 
 interface NavItemProps {
@@ -29,8 +29,8 @@ function renderMuiIcon(name: string) {
   switch (name) {
   case "profile":
     return (<AccountCircleIcon />);
-  case "search":
-    return (<SearchIcon />);
+  case "movies":
+    return (<TheatersIcon />);
   case "rate":
     return (<StarRateIcon />);
   default:

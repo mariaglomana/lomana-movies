@@ -1,20 +1,18 @@
 import React, {useState, useEffect} from "react";
 import { useHistory} from "react-router-dom";
 
-import {ImageGridList} from "../../layout";
+import { SearchForm} from "../../layout";
 import {MoviePreviewData } from "../../types";
 import {PageContainer} from "../../components";
 import {getMovies } from "../../api";
 
 interface SearchProps {
-
 }
 
-const Search: React.FC<SearchProps> =() => {
+const Movies: React.FC<SearchProps> =() => {
 
   let history = useHistory();
   const [allMovies, setAllMovies] = useState< MoviePreviewData[]>([]);
-  // const [filterdMovies, setFilterdMovies] = useState< MoviePreviewData[]>(allMovies);
 
   const loadMovies = async () => {
     const movies = await getMovies();
@@ -31,8 +29,8 @@ const Search: React.FC<SearchProps> =() => {
 
   return (
     <PageContainer title="Your movies" >
-      <ImageGridList title="All the available movies" data={allMovies} />
+      < SearchForm movies={allMovies}/>
     </PageContainer>
   );
 };
-export default Search;
+export default Movies;

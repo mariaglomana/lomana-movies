@@ -1,7 +1,6 @@
 import {IRoute} from "../../types";
-// import {Home, Search, Rate, Profile} from "./index";
 import Home from "./Home";
-import Search from "./Search";
+import Movies from "./Movies";
 import Rate from "./Rate";
 import Profile from "./Profile";
 
@@ -11,8 +10,8 @@ const routes : IRoute[] = [
     component: Home
   },
   {
-    path: "/search",
-    component: Search
+    path: "/movies",
+    component: Movies
   },
   {
     path: "/rate",
