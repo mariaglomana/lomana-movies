@@ -5,11 +5,6 @@ import StarBorder from "@material-ui/icons/StarBorder";
 import Star from "@material-ui/icons/Star";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-      },
-    },
     input: {
       display: "none",
     },
@@ -21,17 +16,20 @@ interface RateGroupButtonsProps {
     handleClickStar: (i:number)=> void ;
 }
 
-const RateGroupButtons: React.FC<RateGroupButtonsProps>= ({ selectedValue, handleClickStar })=> {
-  const classes = useStyles();
+const StarGroupButtons: React.FC<RateGroupButtonsProps>= ({ selectedValue, handleClickStar })=> {
   const values = [1,2,3,4,5];
   return (
-    <div className={classes.root}>
-      {values.map(value => (<StarButton value={value} handleClickStar={handleClickStar} selectedValue={selectedValue}/>))}
+    <div >
+      {values.map(value => (
+        <StarButton value={value} 
+          handleClickStar={handleClickStar} 
+          selectedValue={selectedValue}/>))}
     </div>
   );
 };
 
-const StarButton = ({value, selectedValue, handleClickStar }:{value: number, selectedValue?: number, handleClickStar: (i:number)=> void } ) => {
+const StarButton = ({value, selectedValue, handleClickStar }
+  :{value: number, selectedValue?: number, handleClickStar: (i:number)=> void } ) => {
   const classes = useStyles();
   return (<>
     <input className={classes.input} id={`icon-button-star-${value}`} type="number" />
@@ -45,4 +43,4 @@ const StarButton = ({value, selectedValue, handleClickStar }:{value: number, sel
   </>);
 };
 
-export default RateGroupButtons;
+export default StarGroupButtons;

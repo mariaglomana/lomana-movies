@@ -3,14 +3,14 @@ import {APIMovieData, MoviePreviewData, MoviesAPIParams} from "../types";
 import {BASE_URL, BASE_POST_USER_DATA} from "../host_backend";
 import {getFormattedPreviewMovies} from "../utils";
 
-async function getUnratedRandomMovie(): Promise<MoviePreviewData[] | null> {
+async function getUnratedRandomMovie(): Promise<MoviePreviewData | null> {
   const authToken = localStorage.getItem("planet_auth_token");
 
   if (authToken){
     const fetchedMovie: APIMovieData| undefined = await fetchUnratedRandomMovie(authToken);
     if (fetchedMovie){
       const filteredMovies = getFormattedPreviewMovies([fetchedMovie]);
-      return filteredMovies as MoviePreviewData[];
+      return filteredMovies[0] as MoviePreviewData;
     }
   }
   return null;

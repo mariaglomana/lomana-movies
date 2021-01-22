@@ -14,7 +14,6 @@ async function registerRate (movie_id: string, score: number): Promise<APIRespon
 
   try {
     const response = await axios.post(url, params, {headers});
-    console.log("response", response);
     if (response?.status === 200) {
       return {
         success: true,

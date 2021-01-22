@@ -8,7 +8,7 @@ import FormControl from "@material-ui/core/FormControl";
 
 import theme from "../assets/theme";
 import {MoviePreviewData } from "../types";
-import {ImageGridList} from "./index";
+import {ImageGridList} from "../components";
 
 
 const useStyles = makeStyles({
