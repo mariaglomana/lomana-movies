@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import { useHistory} from "react-router-dom";
 
 import {MoviePreviewData } from "../../types";
@@ -7,7 +7,6 @@ import {ActionRateGroupButtons} from "../../layout";
 import {getUnratedRandomMovie, registerRate } from "../../api";
 
 interface RateProps {
-
 }
 
 const Rate: React.FC<RateProps> =() => {
@@ -19,7 +18,7 @@ const Rate: React.FC<RateProps> =() => {
   const handleSaveRate = () => {
     const response = unratedMovie && registerRate(unratedMovie.id, rate as number);
     if (response){
-      loadRandomMovie();
+      memoizedLoadRandomMovie();
       setRate(undefined);
     }
   };
@@ -28,25 +27,32 @@ const Rate: React.FC<RateProps> =() => {
     setRate(value);
   };
 
-  const loadRandomMovie = async () => {
-    const movie = await getUnratedRandomMovie();
-    if (movie){
-      setUnratedMovie(movie as MoviePreviewData);
-    } else {
-      history.push("/welcome");
-    }
-  };
+  const memoizedLoadRandomMovie = useCallback(
+    () => {
+      const loadRandomMovie = async () => {
+        const movie = await getUnratedRandomMovie();
+        if (movie){
+          setUnratedMovie(movie as MoviePreviewData);
+        } else {
+          history.push("/welcome");
+        }
+      };
+    
+      loadRandomMovie();
+    },
+    [history],
+  );
 
   useEffect(()=>{
-    loadRandomMovie();
-  },[]);
+    memoizedLoadRandomMovie();
+  },[memoizedLoadRandomMovie]);
 
   return (
     <PageContainer title="Rate random movies" >
       <ImageGridItem item={unratedMovie} />
       <ActionRateGroupButtons 
         rate={rate}
-        loadRandomMovie={loadRandomMovie}
+        loadRandomMovie={memoizedLoadRandomMovie}
         setRate={setRate} 
         handleSaveRate={handleSaveRate}
         handleClickStar={handleClickStar}

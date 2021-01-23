@@ -10,22 +10,23 @@ interface SearchProps {
 }
 
 const Movies: React.FC<SearchProps> =() => {
-
   let history = useHistory();
+
   const [allMovies, setAllMovies] = useState< MoviePreviewData[]>([]);
 
-  const loadMovies = async () => {
-    const movies = await getMovies();
-    if (movies){
-      setAllMovies(movies as MoviePreviewData[]);
-    } else {
-      history.push("/welcome");
-    }
-  };
 
   useEffect(()=>{
+    const loadMovies = async () => {
+      const movies = await getMovies();
+      if (movies){
+        setAllMovies(movies as MoviePreviewData[]);
+      } else {
+        history.push("/welcome");
+      }
+    };
+  
     loadMovies();
-  },[]);
+  },[history]);
 
   return (
     <PageContainer title="Your movies" >
