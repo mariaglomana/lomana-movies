@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
@@ -46,7 +47,11 @@ const ImageGridItem:React.FC<ImageGridItemProps> = ({item}) =>{
           title={item.title}
           subtitle={item.year}
           actionIcon={
-            <IconButton aria-label={`info about ${item.title}`} className={classes.icon}>
+            <IconButton 
+              component={Link}
+              to={`/movie_detail/${item.id}`}
+              aria-label={`info about ${item.title}`} 
+              className={classes.icon}>
               <InfoIcon />
             </IconButton>
           }

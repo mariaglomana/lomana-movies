@@ -5,9 +5,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 import routes from "./mainApp/routes";
-import {IRoute} from "../types";
+import {IRoute, MovieDetaiMatchProps} from "../types";
+import MovieDetail from "./mainApp/MovieDetail";
+
 interface MainAppProps {
 }
 const MainApp: React.FC<MainAppProps> =() => {
@@ -16,14 +19,23 @@ const MainApp: React.FC<MainAppProps> =() => {
     <Switch>
       {routes.map((route, i) => (
         <RouteWithSubRoutes key={i} {...route} />
-      ))}    </Switch> 
+      ))}   
+
+
+      <Route exact path="/movie_detail/:movie_id" render={({match}: MovieDetaiMatchProps)=> (
+        <MovieDetail movie_id={match.params.movie_id} />
+      )}/>
+      <Route exact path="/" children={<Redirect to="/home" />} />
+
+
+    </Switch> 
   </Router>);
 };
 
 function RouteWithSubRoutes(route: IRoute) {
   return (
     <Route
-      path={route.path}
+      exact path={route.path}
       render={props => (
         <route.component {...props} routes={route.routes} />
       )}

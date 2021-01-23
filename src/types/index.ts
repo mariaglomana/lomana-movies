@@ -1,8 +1,9 @@
+import { RouteComponentProps } from "react-router-dom";
 //USER
 export interface User {
     id: string,
     first_name: string,
-    last_name: string,
+    last_name: string, 
     email: string,
     password: string,
   }
@@ -42,7 +43,7 @@ export interface APIMovieData {
   "poster_url": string;
 }
 
-export interface MoviesAPIParams {
+export interface MoviesQueryParams {
   page?: number;
   size?: number;
   order?: MovieDataKey;
@@ -55,6 +56,14 @@ export type MoviePreviewData = Pick<APIMovieData, "id"| "title"| "year"| "poster
 export type MovieDataKey = keyof MovieData;
 
 //NAVIGATION
+interface MovieDetailMatchParams {
+  movie_id: string;
+}
+
+export interface MovieDetaiMatchProps extends RouteComponentProps<MovieDetailMatchParams> {
+}
+
+
 export type NavKeys = "profile" | "movies" | "rate" ;
 
 export interface IRoute {

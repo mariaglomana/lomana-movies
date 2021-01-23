@@ -16,10 +16,11 @@ const App =() => {
   return ( <Router>
     <div className="App">
       <Switch>
-        <Route path="/" component={MainApp} />
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/sign_in" component={SignIn} />
         <Route exact path="/sign_up" component={SignUp} />
+        <Route path="/" component={MainApp} />
+
       </Switch>
     </div>
   </Router>
