@@ -32,11 +32,11 @@ const useStyles = makeStyles({
 });
 
 
-interface SearchFormProps {
+interface MoviesSearchFormProps {
     movies: MoviePreviewData[];
     }
     
-const SearchForm: React.FC<SearchFormProps> =({movies}) => {
+const MoviesSearchForm: React.FC<MoviesSearchFormProps> =({movies}) => {
   const classes = useStyles();
   const [inputTitle, setInputTitle] = useState<string>("");
   const [filteredMovies, setFilteredMovies] = useState< MoviePreviewData[]>([]);
@@ -84,4 +84,4 @@ const SearchForm: React.FC<SearchFormProps> =({movies}) => {
     </div>
   );
 };
-export default SearchForm;
+export default MoviesSearchForm;

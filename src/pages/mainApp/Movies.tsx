@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useHistory} from "react-router-dom";
 
-import { SearchForm} from "../../layout";
+import { MoviesSearchForm} from "../../layout";
 import {MoviePreviewData } from "../../types";
 import {PageContainer} from "../../components";
 import {getMovies } from "../../api";
@@ -30,7 +30,7 @@ const Movies: React.FC<SearchProps> =() => {
 
   return (
     <PageContainer title="Your movies" >
-      < SearchForm movies={allMovies}/>
+      < MoviesSearchForm movies={allMovies}/>
     </PageContainer>
   );
 };
