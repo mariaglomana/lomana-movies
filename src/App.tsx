@@ -1,29 +1,27 @@
 import React from "react";
-// import React, {useContext} from "react";
-import "./assets/css/index.css";
-import MainApp from "./pages/MainApp";
-import Welcome from "./pages/Welcome";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-
 import { 
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
-const App =() => {
-  return ( <Router>
-    <div className="App">
-      <Switch>
-        <Route exact path="/welcome" component={Welcome} />
-        <Route exact path="/sign_in" component={SignIn} />
-        <Route exact path="/sign_up" component={SignUp} />
-        <Route path="/" component={MainApp} />
+import "./assets/css/index.css";
+import {Appbar} from "./layout";
+import { Welcome, SignIn, SignUp } from "./pages";
 
-      </Switch>
-    </div>
-  </Router>
+
+const App =() => {
+  return ( 
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/welcome" component={Welcome} />
+          <Route exact path="/sign_in" component={SignIn} />
+          <Route exact path="/sign_up" component={SignUp} />
+          <Appbar variant="temporary"/> 
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

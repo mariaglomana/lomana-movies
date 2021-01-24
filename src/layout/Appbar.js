@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-import { Router, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { Route, Redirect} from "react-router-dom";
 
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -12,13 +11,11 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
 
-// import theme from "../assets/theme";
-import {Home, Movies, Rate, Profile} from "../pages/mainApp";
+import { Home, Movies, Rate, Profile, MovieDetail } from "../pages";
+
 import {NavItem, HeaderLogo} from "../components";
 
 const drawerWidth = 240;
-const history = createBrowserHistory();
-
 
 const styles = theme => ({
   root: {
@@ -71,7 +68,7 @@ const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
 
 const MyDrawer = withStyles(styles)(
   ({ classes, variant, open, onClose, onItemClick }) => (
-    <Router history={history}>
+    <>
       <Drawer
         variant={variant}
         open={open}
@@ -86,19 +83,23 @@ const MyDrawer = withStyles(styles)(
           })}
         />
         <List>
-          <NavItem name="home" onClose={onClose}/>
-          <NavItem name="movies" onClose={onClose}/>
-          <NavItem name="rate" onClose={onClose}/>
-          <NavItem name="profile" onClose={onClose}/>
+          <NavItem name="home" onClose={onClose} to="/home"/>
+          <NavItem name="movies" onClose={onClose} to="/movies"/>
+          <NavItem name="rate" onClose={onClose} to="/rate"/>
+          <NavItem name="profile" onClose={onClose} to="/profile"/>
         </List>
       </Drawer>
       <main className={classes.content}>
-        <Route exact path="/home" component={Home} />
-        <Route path="/movies" component={Movies} />
-        <Route path="/rate" component={Rate} />
-        <Route path="/profile" component={Profile} />
+        <Route exact path="/home" component={Home}/>
+        <Route exact path="/movies" component={Movies} />
+        <Route exact path="/rate" component={Rate} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/movie_detail/:movie_id" render={({match})=> (
+          <MovieDetail movie_id={match.params.movie_id} />
+        )}/>
+        <Redirect from="/" to="/home" />
       </main>
-    </Router>
+    </>
   )
 );
 

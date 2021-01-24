@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { useHistory} from "react-router-dom";
 
-import { MoviesSearchForm} from "../../layout";
-import {MoviePreviewData } from "../../types";
-import {PageContainer} from "../../components";
-import {getMovies } from "../../api";
+import { MoviesSearchForm} from "../layout";
+import {MoviePreviewData } from "../types";
+import {PageContainer} from "../components";
+import {getMovies } from "../api";
 
 interface SearchProps {
 }

@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import {APIMovieData } from "../../types";
-import {PageContainer} from "../../components";
-import {MovieDetailBody} from "../../layout";
-import {getMovieDetail } from "../../api";
+import {APIMovieData } from "../types";
+import {PageContainer} from "../components";
+import {MovieDetailBody} from "../layout";
+import {getMovieDetail } from "../api";
 interface MovieDetailProps {
   movie_id: string;
 }
