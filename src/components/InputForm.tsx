@@ -50,6 +50,7 @@ const InputForm: React.FC<InputFormProps> =
         htmlFor={id}>{startCase(replace(id, "_", " "))}</InputLabel>
       <FilledInput
         id={id}
+        type={isTypePassword && !showPassword ? "password" : "text"}
         value={state.value}
         name={id}
         onChange={handleOnChange}
