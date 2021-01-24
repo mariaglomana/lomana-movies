@@ -6,3 +6,5 @@ export {default as PageContainer } from "./PageContainer";
 export {default as StarGroupButtons } from "./RateGroupButtons";
 export {default as ImageGridItem } from "./ImageGridItem";
 export {default as ImageGridList } from "./ImageGridList";
+export {default as TextParagraph } from "./TextParagraph";
+export {default as Sidebar } from "./Sidebar";

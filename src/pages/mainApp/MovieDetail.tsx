@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import {APIMovieData } from "../../types";
 import {PageContainer} from "../../components";
+import {MovieDetailBody} from "../../layout";
 import {getMovieDetail } from "../../api";
-
 interface MovieDetailProps {
   movie_id: string;
 }
 
 const MovieDetail: React.FC<MovieDetailProps> =({movie_id}) => {
-  const title=movie_id;
+  const title="Movie detail";
 
   const [movie, setMovie] = useState< APIMovieData| undefined>(undefined);
 
@@ -25,8 +26,11 @@ const MovieDetail: React.FC<MovieDetailProps> =({movie_id}) => {
   },[movie_id]);
 
   return (
-    <PageContainer title={`Movie detail of ${title}`} />
-    // </PageContainer>
+    <PageContainer title={title} >
+      <main>
+        {!movie ? (<CircularProgress />): ( < MovieDetailBody movie={movie}/>)}
+      </main>
+    </PageContainer>
   );
 };
 export default MovieDetail;
