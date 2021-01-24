@@ -1,4 +1,5 @@
 import React from "react";
+import {upperFirst} from "lodash";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -28,7 +29,7 @@ const ProfilePreview: React.FC<ProfilePreviewProps>= ({setShowForm, user}) =>{
   return (<>
     <AccountCircleIcon fontSize="large"/>
     <Typography variant="h6" gutterBottom className={classes.title}>
-      {user.first_name}{" "}{user.last_name}
+      {upperFirst(user.first_name)}{" "}{upperFirst(user.last_name)}
     </Typography>
     <Divider />
     <Typography variant="body1" className={classes.description} gutterBottom>

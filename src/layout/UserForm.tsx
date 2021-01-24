@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import theme from "../assets/theme";
 import {User, APIResponse} from "../types";
 import {getFormattedFormState, validationFormSchema, getInitialFormState} from "../utils";
-import {registerUser, loginUser} from "../api";
+import {registerUser, loginUser, resetUserData} from "../api";
 import useForm from "../hooks/useForm";
 import { InputForm} from "../components";
 
@@ -86,10 +86,10 @@ type FormType = "sign_in" | "sign_up" | "profile"
 interface UserFormProfileProps {
   type: FormType;
   user?: User;
-  setShowForm?: (showForm: boolean)=> void;
+  closeFormAfterChange?: (userToSave?: User)=> void;
 }
 
-const UserFormProfile: React.FC<UserFormProfileProps> =({type, user, setShowForm}) => {
+const UserFormProfile: React.FC<UserFormProfileProps> =({type, user, closeFormAfterChange}) => {
   const classes = useStyles();
   let history = useHistory();
 
@@ -112,7 +112,7 @@ const UserFormProfile: React.FC<UserFormProfileProps> =({type, user, setShowForm
     inputSubmit.current && inputSubmit.current.click();
   };
 
-  const manageAPIResponse =(response: APIResponse| undefined ) => {
+  const manageSignResponse =(response: APIResponse| undefined ) => {
     if (response && response.data){
       localStorage.setItem("planet_auth_token", response.data.token );
       history.push("/home");
@@ -123,20 +123,29 @@ const UserFormProfile: React.FC<UserFormProfileProps> =({type, user, setShowForm
     }
   };
 
+  const manageProfileResponse = async (response: User| undefined ) => {
+    if (response) {
+      closeFormAfterChange && closeFormAfterChange(response);
+    }else {
+      setSubmitErrorMsg("An error has occurred. Please, try again later.");
+    }
+  };
+
   async function onSubmitForm(state: State) {
-    const formattedState = getFormattedFormState(type, state);
+    const formattedState = getFormattedFormState(keys, state);
 
     let response;
+    if (type === "profile" ){
+      response= await resetUserData(formattedState as Omit<User, "id"| "email">);
+      manageProfileResponse(response);
+      return;
+    } 
     if (type === "sign_up" ){
       response= await registerUser(formattedState as Omit<User, "id">);
     } else if (type === "sign_in" ){
       response= await loginUser(formattedState as Omit<User, "id"| "first_name"| "last_name">);
-    // } else if (type === "profile" ){
-      //todo
-      // response= await resetUser(formattedState as Omit<User, "id"| "first_name"| "last_name">);
     } 
-
-    manageAPIResponse(response);
+    manageSignResponse(response);
   }
 
   return (
@@ -218,7 +227,7 @@ const UserFormProfile: React.FC<UserFormProfileProps> =({type, user, setShowForm
             variant="outlined"
             color="secondary"
             aria-label={secondary_btn.action}
-            onClick={()=>setShowForm && setShowForm(false)}
+            onClick={()=>closeFormAfterChange && closeFormAfterChange()}
           >{secondary_btn.action}</Button>
         )}
       </Box>

@@ -1,12 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import theme from "../../assets/theme";
 import {PageContainer} from "../../components";
 import {UserForm, ProfilePreview} from "../../layout";
 import {User} from "../../types";
+import {getUserData } from "../../api";
+
 
 const useStyles = makeStyles({
   paper: {
@@ -24,23 +27,36 @@ interface ProfileProps {
 const Profile: React.FC<ProfileProps> =() => {
   const classes = useStyles();
   const [showForm, setShowForm] = useState<boolean>(false);
+  const [user, setUser] = useState< User| undefined>(undefined);
 
-  const user: User = {
-    id: "vdwaflkeñ",
-    first_name: "María",
-    last_name: "García", 
-    email: "maria@gmail.com",
+  const closeFormAfterChange =(userToSave?: User) => {
+    if(userToSave){
+      setUser(userToSave);
+    }
+    setShowForm(false);
   };
+
+  useEffect(()=>{
+    const loadUser = async () => {
+      const fetchedUser = await getUserData();
+      if (fetchedUser){
+        setUser(fetchedUser);
+      } 
+    };
+  
+    loadUser();
+  },[]);
 
   return (
     <PageContainer title="Your profile" >
       <Container component="main" maxWidth="xs">
         <div className={classes.paper}>
-
-          {showForm ? (
-            <UserForm type="profile" user={user} setShowForm={setShowForm}/>
-          ) : (
-            <ProfilePreview user={user} setShowForm={setShowForm}/>
+          {!user ? (<CircularProgress />): (
+            showForm ? (
+              <UserForm type="profile" user={user} closeFormAfterChange={closeFormAfterChange} />
+            ) : (
+              <ProfilePreview user={user} setShowForm={setShowForm}/>
+            )
           )}
         </div>
         <Box mt={8}>
