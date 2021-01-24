@@ -1,13 +1,11 @@
-import * as React from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { makeStyles } from "@material-ui/core/styles";
 import Title from "./Title";
 import theme from "../assets/theme";
-
-interface PageContainerProps {
-  children?: React.ReactNode;
-  title: string;
-}
 
 const useStyles = makeStyles({
   paper: {
@@ -16,11 +14,21 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
   },
+  button: {
+    marginTop: theme.spacing(6),
+    alignSelf: "flex-start",
+    marginBottom: theme.spacing(4),
+  }
 });
+interface PageContainerProps{
+  children?: React.ReactNode;
+  title: string;
+  withBackButton?: boolean;
+}
 
-
-export default function PageContainer({children, title}: PageContainerProps) {
+const PageContainer: React.FC<PageContainerProps>=({children, title, withBackButton}) =>{
   const classes = useStyles();
+  let history = useHistory();
 
   return (
     <Container maxWidth="lg" >
@@ -29,8 +37,23 @@ export default function PageContainer({children, title}: PageContainerProps) {
           {title}
         </Title>
         {children}
+        {withBackButton && (
+          <div className={classes.button}
+          >
+            <Button
+              variant="contained"
+              color="secondary"
+              aria-label="Go back"
+              startIcon={<ArrowBackIcon />}
+              onClick={() => history.goBack()}>
+            Go back
+            </Button>
+          </div>
+        )}
       </div>
     </Container>
-
   );
-}
+};
+
+
+export default PageContainer;

@@ -26,7 +26,7 @@ const MovieDetail: React.FC<MovieDetailProps> =({movie_id}) => {
   },[movie_id]);
 
   return (
-    <PageContainer title={title} >
+    <PageContainer title={title} withBackButton>
       <main>
         {!movie ? (<CircularProgress />): ( < MovieDetailBody movie={movie}/>)}
       </main>
