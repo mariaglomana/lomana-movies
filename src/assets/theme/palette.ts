@@ -12,15 +12,15 @@ const palette = {
     contrastText: "#fff",
   },
   tertiary: {
-    main: "#ac1de1"
+    main: "#ac1de1",
   },
   text: {
     primary: "#000000",
     secondary: "#828282",
-  }
+  },
 };
 
 export default palette;
-    
+
 //Other keys available with props main, secondary, etc
 //error, warning, info, success

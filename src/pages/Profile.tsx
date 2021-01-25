@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import theme from "../assets/theme";
-import {PageContainer} from "../components";
-import {UserForm, ProfilePreview} from "../layout";
-import {User} from "../types";
-import {getUserData } from "../api";
-
+import { PageContainer } from "../components";
+import { UserForm, ProfilePreview } from "../layout";
+import { User } from "../types";
+import { getUserData } from "../api";
 
 const useStyles = makeStyles({
   paper: {
@@ -20,49 +19,47 @@ const useStyles = makeStyles({
   },
 });
 
-interface ProfileProps {
-
-}
-
-const Profile: React.FC<ProfileProps> =() => {
+const Profile: React.FC = () => {
   const classes = useStyles();
   const [showForm, setShowForm] = useState<boolean>(false);
-  const [user, setUser] = useState< User| undefined>(undefined);
+  const [user, setUser] = useState<User | undefined>(undefined);
 
-  const closeFormAfterChange =(userToSave?: User) => {
-    if(userToSave){
+  const closeFormAfterChange = (userToSave?: User) => {
+    if (userToSave) {
       setUser(userToSave);
     }
     setShowForm(false);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     const loadUser = async () => {
       const fetchedUser = await getUserData();
-      if (fetchedUser){
+      if (fetchedUser) {
         setUser(fetchedUser);
-      } 
+      }
     };
-  
+
     loadUser();
-  },[]);
+  }, []);
 
   return (
-    <PageContainer title="Your profile" >
+    <PageContainer title="Your profile">
       <Container component="main" maxWidth="xs">
         <div className={classes.paper}>
-          {!user ? (<CircularProgress />): (
-            showForm ? (
-              <UserForm type="profile" user={user} closeFormAfterChange={closeFormAfterChange} />
-            ) : (
-              <ProfilePreview user={user} setShowForm={setShowForm}/>
-            )
+          {!user ? (
+            <CircularProgress />
+          ) : showForm ? (
+            <UserForm
+              type="profile"
+              user={user}
+              closeFormAfterChange={closeFormAfterChange}
+            />
+          ) : (
+            <ProfilePreview user={user} setShowForm={setShowForm} />
           )}
         </div>
-        <Box mt={8}>
-        </Box>
+        <Box mt={8}></Box>
       </Container>
-
     </PageContainer>
   );
 };

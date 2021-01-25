@@ -4,7 +4,7 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import ListSubheader from "@material-ui/core/ListSubheader";
 
-import {MoviePreviewData } from "../types";
+import { MoviePreviewData } from "../types";
 import ImageGridItem from "./ImageGridItem";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -15,12 +15,12 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "space-around",
       overflow: "hidden",
       backgroundColor: theme.palette.background.paper,
-      marginBottom: theme.spacing(8)
+      marginBottom: theme.spacing(8),
     },
     gridList: {
       width: "100%",
       height: "100%",
-      justifyContent: "center"
+      justifyContent: "center",
     },
     icon: {
       color: "#ff6363",
@@ -29,21 +29,21 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface ImageGridListProps {
-data: MoviePreviewData[];
-title: string;
+  data: MoviePreviewData[];
+  title: string;
 }
 
-const ImageGridList:React.FC<ImageGridListProps> = ({data, title}) =>{
+const ImageGridList: React.FC<ImageGridListProps> = ({ data, title }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={150} spacing={8} className={classes.gridList} >
+      <GridList cellHeight={150} spacing={8} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: "auto" }}>
           <ListSubheader component="div">{title}</ListSubheader>
         </GridListTile>
-        {data.map((tile) => (
-          <ImageGridItem item={tile}/>
+        {data.map((tile, i) => (
+          <ImageGridItem item={tile} key={i} />
         ))}
       </GridList>
     </div>

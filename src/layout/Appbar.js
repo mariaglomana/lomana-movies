@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import clsx from "clsx";
-import { Route, Redirect} from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -13,30 +14,30 @@ import Box from "@material-ui/core/Box";
 
 import { Home, Movies, Rate, Profile, MovieDetail } from "../pages";
 
-import {NavItem, HeaderLogo} from "../components";
+import { NavItem, HeaderLogo } from "../components";
 
 const drawerWidth = 240;
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     justifyContent: "space-between",
   },
   flex: {
-    flex: 1
+    flex: 1,
   },
   drawerPaper: {
     position: "relative",
-    width: drawerWidth
+    width: drawerWidth,
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20
+    marginRight: 20,
   },
   toolbarMargin: theme.mixins.toolbar,
   aboveDrawer: {
     zIndex: theme.zIndex.drawer + 1,
-    widht: "100%"
+    widht: "100%",
   },
   barContent: {
     flex: 1,
@@ -48,22 +49,21 @@ const styles = theme => ({
 });
 
 const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
-  <div >
+  <div>
     <AppBar className={classes.aboveDrawer} color="primary" position="fixed">
-      <Toolbar className={classes.barContent }>
+      <Toolbar className={classes.barContent}>
         <IconButton
           className={classes.menuButton}
           color="inherit"
           aria-label="Menu"
-          onClick={onMenuClick}
-        >
+          onClick={onMenuClick}>
           <MenuIcon />
         </IconButton>
         <HeaderLogo />
       </Toolbar>
     </AppBar>
     <div className={classes.toolbarMargin} />
-  </div >
+  </div>
 ));
 
 const MyDrawer = withStyles(styles)(
@@ -74,33 +74,36 @@ const MyDrawer = withStyles(styles)(
         open={open}
         onClose={onClose}
         classes={{
-          paper: classes.drawerPaper
-        }}
-      >
+          paper: classes.drawerPaper,
+        }}>
         <div
           className={clsx({
-            [classes.toolbarMargin]: variant === "persistent"
+            [classes.toolbarMargin]: variant === "persistent",
           })}
         />
         <List>
-          <NavItem name="home" onClose={onClose} to="/home"/>
-          <NavItem name="movies" onClose={onClose} to="/movies"/>
-          <NavItem name="rate" onClose={onClose} to="/rate"/>
-          <NavItem name="profile" onClose={onClose} to="/profile"/>
+          <NavItem name="home" onClose={onClose} to="/home" />
+          <NavItem name="movies" onClose={onClose} to="/movies" />
+          <NavItem name="rate" onClose={onClose} to="/rate" />
+          <NavItem name="profile" onClose={onClose} to="/profile" />
         </List>
       </Drawer>
       <main className={classes.content}>
-        <Route exact path="/home" component={Home}/>
+        <Route exact path="/home" component={Home} />
         <Route exact path="/movies" component={Movies} />
         <Route exact path="/rate" component={Rate} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/movie_detail/:movie_id" render={({match})=> (
-          <MovieDetail movie_id={match.params.movie_id} />
-        )}/>
+        <Route
+          exact
+          path="/movie_detail/:movie_id"
+          render={({ match }) => (
+            <MovieDetail movie_id={match.params.movie_id} />
+          )}
+        />
         <Redirect from="/" to="/home" />
       </main>
     </>
-  )
+  ),
 );
 
 function AppBarInteraction({ classes, variant }) {
@@ -111,7 +114,7 @@ function AppBarInteraction({ classes, variant }) {
     setDrawer(!drawer);
   };
 
-  const onItemClick = title => () => {
+  const onItemClick = (title) => () => {
     setTitle(title);
     setDrawer(variant === "temporary" ? false : drawer);
     setDrawer(!drawer);
@@ -119,7 +122,7 @@ function AppBarInteraction({ classes, variant }) {
 
   return (
     <Box className={classes.root}>
-      <MyToolbar title={title} onMenuClick={toggleDrawer}/> 
+      <MyToolbar title={title} onMenuClick={toggleDrawer} />
       <MyDrawer
         open={drawer}
         onClose={toggleDrawer}

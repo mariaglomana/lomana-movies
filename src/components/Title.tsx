@@ -5,9 +5,14 @@ interface TitleProps {
   children?: React.ReactNode;
 }
 
-export default function Title(props: TitleProps) {
+export default function Title(props: TitleProps): React.ReactElement {
   return (
-    <Typography component="h2" variant="h6" color="primary" gutterBottom style={{fontWeight: "bold", alignSelf: "flex-start"}}>
+    <Typography
+      component="h2"
+      variant="h6"
+      color="primary"
+      gutterBottom
+      style={{ fontWeight: "bold", alignSelf: "flex-start" }}>
       {props.children}
     </Typography>
   );

@@ -24,7 +24,8 @@ const validationFormSchema = {
     required: true,
     validator: {
       regEx: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-      error: "Your password must contain at least six characters, including one letter, one number and no spaces.",
+      error:
+        "Your password must contain at least six characters, including one letter, one number and no spaces.",
     },
   },
 };

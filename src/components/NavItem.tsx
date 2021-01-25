@@ -1,4 +1,5 @@
-import {upperFirst} from "lodash";
+/* eslint-disable indent */
+import { upperFirst } from "lodash";
 import React from "react";
 import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
@@ -9,32 +10,38 @@ import TheatersIcon from "@material-ui/icons/Theaters";
 import StarRateIcon from "@material-ui/icons/StarRate";
 
 interface NavItemProps {
-name: string;
-onClose: ()=> void;
+  name: string;
+  onClose: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> =({name, onClose})=> {
+const NavItem: React.FC<NavItemProps> = ({ name, onClose }) => {
   const title = upperFirst(name);
   const route = name === "home" ? "" : title;
-  return(<>
-    <ListItem button key={name} component={Link} to={`/${name}`} onClick={()=> onClose()}>
-      {route && <ListItemIcon>{renderMuiIcon(name)}</ListItemIcon>}
-      <ListItemText primary={title} />
-    </ListItem>
-  </>);
-      
+  return (
+    <>
+      <ListItem
+        button
+        key={name}
+        component={Link}
+        to={`/${name}`}
+        onClick={() => onClose()}>
+        {route && <ListItemIcon>{renderMuiIcon(name)}</ListItemIcon>}
+        <ListItemText primary={title} />
+      </ListItem>
+    </>
+  );
 };
 
 function renderMuiIcon(name: string) {
   switch (name) {
-  case "profile":
-    return (<AccountCircleIcon />);
-  case "movies":
-    return (<TheatersIcon />);
-  case "rate":
-    return (<StarRateIcon />);
-  default:
-    return null;
+    case "profile":
+      return <AccountCircleIcon />;
+    case "movies":
+      return <TheatersIcon />;
+    case "rate":
+      return <StarRateIcon />;
+    default:
+      return null;
   }
 }
 

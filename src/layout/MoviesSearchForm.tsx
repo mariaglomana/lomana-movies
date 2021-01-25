@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {startCase, filter, includes, toLower} from "lodash";
+import React, { useState } from "react";
+import { startCase, filter, includes, toLower } from "lodash";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -7,15 +7,14 @@ import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
 
 import theme from "../assets/theme";
-import {MoviePreviewData } from "../types";
-import {ImageGridList} from "../components";
-
+import { MoviePreviewData } from "../types";
+import { ImageGridList } from "../components";
 
 const useStyles = makeStyles({
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-    maxWidth: 600
+    maxWidth: 600,
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -31,21 +30,24 @@ const useStyles = makeStyles({
   },
 });
 
-
 interface MoviesSearchFormProps {
-    movies: MoviePreviewData[];
-    }
-    
-const MoviesSearchForm: React.FC<MoviesSearchFormProps> =({movies}) => {
+  movies: MoviePreviewData[];
+}
+
+const MoviesSearchForm: React.FC<MoviesSearchFormProps> = ({ movies }) => {
   const classes = useStyles();
   const [inputTitle, setInputTitle] = useState<string>("");
-  const [filteredMovies, setFilteredMovies] = useState< MoviePreviewData[]>([]);
+  const [filteredMovies, setFilteredMovies] = useState<MoviePreviewData[]>([]);
 
-  const imgGridTitle = !inputTitle ? "All the available movies" : "Filtered results";
+  const imgGridTitle = !inputTitle
+    ? "All the available movies"
+    : "Filtered results";
   const moviesToDisplay = !inputTitle ? movies : filteredMovies;
 
-  const filterByTitle = (text: string)=> {
-    return filter(movies, (movie) => includes(toLower(movie.title), toLower(text)));
+  const filterByTitle = (text: string) => {
+    return filter(movies, (movie) =>
+      includes(toLower(movie.title), toLower(text)),
+    );
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,12 +58,12 @@ const MoviesSearchForm: React.FC<MoviesSearchFormProps> =({movies}) => {
   };
 
   return (
-    <div >
+    <div>
       <Box m={3}>
         <Typography component="h6" paragraph>
           Filter your movies by title:
         </Typography>
-        <form className={classes.form} noValidate >
+        <form className={classes.form} noValidate>
           <FormControl fullWidth className={classes.margin}>
             <OutlinedInput
               id="filter-by-title"
@@ -80,7 +82,6 @@ const MoviesSearchForm: React.FC<MoviesSearchFormProps> =({movies}) => {
         </form>
       </Box>
       <ImageGridList title={imgGridTitle} data={moviesToDisplay} />
-
     </div>
   );
 };

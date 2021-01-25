@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 //hook taken from: https://hackernoon.com/react-form-validation-using-react-hooks-5859c32280ca
 
 import { useState, useEffect, useCallback } from "react";
@@ -12,7 +13,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
   // Wrapped in useCallback to cached the function to avoid intensive memory leaked
   // in every re-render in component
   const validateState = useCallback(() => {
-    const hasErrorInState = Object.keys(validationSchema).some(key => {
+    const hasErrorInState = Object.keys(validationSchema).some((key) => {
       const isInputFieldRequired = validationSchema[key].required;
       const stateValue = state[key].value; // state value
       const stateError = state[key].error; // state error
@@ -25,14 +26,14 @@ function useForm(stateSchema, validationSchema = {}, callback) {
 
   // Used to handle every changes in every input
   const handleOnChange = useCallback(
-    event => {
+    (event) => {
       setIsDirty(true);
 
       const name = event.target.name;
       const value = event.target.value;
 
       let error = "";
-      if ( validationSchema[name].required) {
+      if (validationSchema[name].required) {
         if (!value) {
           error = "This is a required field.";
         }
@@ -47,16 +48,16 @@ function useForm(stateSchema, validationSchema = {}, callback) {
         }
       }
 
-      setState(prevState => ({
+      setState((prevState) => ({
         ...prevState,
         [name]: { value, error },
       }));
     },
-    [validationSchema]
+    [validationSchema],
   );
 
   const handleOnSubmit = useCallback(
-    event => {
+    (event) => {
       event.preventDefault();
 
       // Make sure that validateState returns false
@@ -65,14 +66,14 @@ function useForm(stateSchema, validationSchema = {}, callback) {
         callback(state);
       }
     },
-    [state, callback, validateState]
+    [state, callback, validateState],
   );
 
   // Disable button in initial render.
   useEffect(() => {
     setDisable(true);
   }, []);
-  
+
   // For every changed in our state this will be fired
   // To be able to disable the button
   useEffect(() => {
@@ -80,7 +81,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
       setDisable(validateState());
     }
   }, [state, isDirty, validateState]);
-  
+
   return { state, disable, handleOnChange, handleOnSubmit };
 }
 

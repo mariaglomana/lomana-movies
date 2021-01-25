@@ -16,27 +16,28 @@ const useStyles = makeStyles({
   },
 });
 
-interface SignPageContainerProps{
+interface SignPageContainerProps {
   children: React.ReactNode;
   title: string;
 }
 
-const SignPageContainer: React.FC<SignPageContainerProps>=({children, title}) =>{
+const SignPageContainer: React.FC<SignPageContainerProps> = ({
+  children,
+  title,
+}) => {
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <LogoImg />
-        <Box m={2}>
-        </Box>
+        <Box m={2}></Box>
         <Typography component="h1" variant="h5" paragraph>
           {title}
         </Typography>
         {children}
       </div>
-      <Box mt={8}>
-      </Box>
+      <Box mt={8}></Box>
     </Container>
   );
 };

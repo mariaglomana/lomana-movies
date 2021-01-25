@@ -1,36 +1,32 @@
-import React, {useState, useEffect} from "react";
-import { useHistory} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-import { MoviesSearchForm} from "../layout";
-import {MoviePreviewData } from "../types";
-import {PageContainer} from "../components";
-import {getMovies } from "../api";
+import { MoviesSearchForm } from "../layout";
+import { MoviePreviewData } from "../types";
+import { PageContainer } from "../components";
+import { getMovies } from "../api";
 
-interface SearchProps {
-}
+const Movies: React.FC = () => {
+  const history = useHistory();
 
-const Movies: React.FC<SearchProps> =() => {
-  let history = useHistory();
+  const [allMovies, setAllMovies] = useState<MoviePreviewData[]>([]);
 
-  const [allMovies, setAllMovies] = useState< MoviePreviewData[]>([]);
-
-
-  useEffect(()=>{
+  useEffect(() => {
     const loadMovies = async () => {
       const movies = await getMovies();
-      if (movies){
+      if (movies) {
         setAllMovies(movies as MoviePreviewData[]);
       } else {
         history.push("/welcome");
       }
     };
-  
+
     loadMovies();
-  },[history]);
+  }, [history]);
 
   return (
-    <PageContainer title="Your movies" >
-      < MoviesSearchForm movies={allMovies}/>
+    <PageContainer title="Your movies">
+      <MoviesSearchForm movies={allMovies} />
     </PageContainer>
   );
 };

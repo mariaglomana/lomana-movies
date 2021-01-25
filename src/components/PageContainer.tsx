@@ -18,35 +18,36 @@ const useStyles = makeStyles({
     marginTop: theme.spacing(6),
     alignSelf: "flex-start",
     marginBottom: theme.spacing(4),
-  }
+  },
 });
-interface PageContainerProps{
+interface PageContainerProps {
   children?: React.ReactNode;
   title: string;
   withBackButton?: boolean;
 }
 
-const PageContainer: React.FC<PageContainerProps>=({children, title, withBackButton}) =>{
+const PageContainer: React.FC<PageContainerProps> = ({
+  children,
+  title,
+  withBackButton,
+}) => {
   const classes = useStyles();
-  let history = useHistory();
+  const history = useHistory();
 
   return (
-    <Container maxWidth="lg" >
+    <Container maxWidth="lg">
       <div className={classes.paper}>
-        <Title >
-          {title}
-        </Title>
+        <Title>{title}</Title>
         {children}
         {withBackButton && (
-          <div className={classes.button}
-          >
+          <div className={classes.button}>
             <Button
               variant="contained"
               color="secondary"
               aria-label="Go back"
               startIcon={<ArrowBackIcon />}
               onClick={() => history.goBack()}>
-            Go back
+              Go back
             </Button>
           </div>
         )}
@@ -54,6 +55,5 @@ const PageContainer: React.FC<PageContainerProps>=({children, title, withBackBut
     </Container>
   );
 };
-
 
 export default PageContainer;

@@ -1,5 +1,5 @@
 import React from "react";
-import {replace, upperFirst} from "lodash";
+import { replace, upperFirst } from "lodash";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 
 import imdbLogo from "../assets/images/imdb.png";
-import {dataParam} from "../types";
+import { dataParam } from "../types";
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -22,17 +22,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LogoImg = styled.img`
-width: 60px;
-height: "auto";
+  width: 60px;
+  height: "auto";
 `;
 
 interface SidebarProps {
-  title: string; 
-  data: dataParam[]; 
+  title: string;
+  data: dataParam[];
   url: string;
 }
 
-const Sidebar: React.FC<SidebarProps>=({title , data , url}) =>{
+const Sidebar: React.FC<SidebarProps> = ({ title, data, url }) => {
   const classes = useStyles();
 
   return (
@@ -41,12 +41,25 @@ const Sidebar: React.FC<SidebarProps>=({title , data , url}) =>{
         {title}
       </Typography>
       <Box mb={2}>
-        {data.map(info => (<Typography>{replace(info.key as string, "_", " ")+ ": "+ upperFirst(info.value)}</Typography>))}
+        {data.map((info, i) => (
+          <Typography key={i}>
+            {replace(info.key as string, "_", " ") +
+              ": " +
+              upperFirst(info.value)}
+          </Typography>
+        ))}
       </Box>
-      <Link display="block" variant="body1" href={url} key="imdb-link" target="_blank" rel="noreferrer" aria-label="go to movie detail at IMDb">
+      <Link
+        display="block"
+        variant="body1"
+        href={url}
+        key="imdb-link"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="go to movie detail at IMDb">
         <Grid container direction="row" spacing={1} alignItems="center">
           <Grid item>
-            <LogoImg src={imdbLogo} alt="Planet Movies Logo"/>
+            <LogoImg src={imdbLogo} alt="Planet Movies Logo" />
           </Grid>
           <Grid item>See more</Grid>
         </Grid>
