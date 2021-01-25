@@ -82,10 +82,11 @@ const MyDrawer = withStyles(styles)(
           })}
         />
         <List>
-          <NavItem name="home" onClose={onClose} to="/home" />
-          <NavItem name="movies" onClose={onClose} to="/movies" />
-          <NavItem name="rate" onClose={onClose} to="/rate" />
-          <NavItem name="profile" onClose={onClose} to="/profile" />
+          <NavItem name="home" onClose={onClose} />
+          <NavItem name="movies" onClose={onClose} />
+          <NavItem name="rate" onClose={onClose} />
+          <NavItem name="profile" onClose={onClose} />
+          <NavItem name="sign_out" onClose={onClose} />
         </List>
       </Drawer>
       <main className={classes.content}>

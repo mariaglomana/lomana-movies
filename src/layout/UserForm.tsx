@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { omit } from "lodash";
 import clsx from "clsx";
 import { Link as RouterLink, useHistory } from "react-router-dom";
@@ -8,14 +8,14 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 import theme from "../assets/theme";
-import { User, APIResponse } from "../types";
+import { User } from "../types";
 import {
   getFormattedFormState,
   validationFormSchema,
   getInitialFormState,
 } from "../utils";
-import { registerUser, loginUser, resetUserData } from "../api";
-import useForm from "../hooks/useForm";
+import { resetUserData } from "../api";
+import { useForm, useUser } from "../hooks";
 import { InputForm } from "../components";
 
 const useStyles = makeStyles({
@@ -105,6 +105,7 @@ const UserFormProfile: React.FC<UserFormProfileProps> = ({
 }) => {
   const classes = useStyles();
   const history = useHistory();
+  const { signIn, signUp, isLogged, hasError } = useUser();
 
   const isFullForm = type !== "sign_in";
   const isSignForm = type !== "profile";
@@ -131,16 +132,14 @@ const UserFormProfile: React.FC<UserFormProfileProps> = ({
     inputSubmit.current && inputSubmit.current.click();
   };
 
-  const manageSignResponse = (response: APIResponse | undefined) => {
-    if (response && response.data) {
-      localStorage.setItem("planet_auth_token", response.data.token);
-      history.push("/home");
-    } else if (response && response.error) {
-      setSubmitErrorMsg(response.error);
-    } else {
+  useEffect(() => {
+    if (isLogged && type !== "profile") history.push("/");
+  }, [isLogged, history]);
+
+  useEffect(() => {
+    if (hasError)
       setSubmitErrorMsg("An error has occurred. Please, try again later.");
-    }
-  };
+  }, [hasError]);
 
   const manageProfileResponse = async (response: User | undefined) => {
     if (response) {
@@ -161,14 +160,11 @@ const UserFormProfile: React.FC<UserFormProfileProps> = ({
       manageProfileResponse(response);
       return;
     }
-    if (type === "sign_up") {
-      response = await registerUser(formattedState as Omit<User, "id">);
-    } else if (type === "sign_in") {
-      response = await loginUser(
-        formattedState as Omit<User, "id" | "first_name" | "last_name">,
-      );
+    if (type === "sign_in") {
+      signIn(formattedState as Omit<User, "id" | "first_name" | "last_name">);
+    } else if (type === "sign_up") {
+      signUp(formattedState as Omit<User, "id">);
     }
-    manageSignResponse(response);
   }
 
   return (

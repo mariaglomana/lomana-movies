@@ -7,13 +7,17 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./assets/theme";
 import "./assets/css/index.css";
 import App from "./App";
+import { UserContextProvider } from "./context/UserContext";
+
 // import reportWebVitals from './reportWebVitals';
 
 const routing = (
   <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
+      <UserContextProvider>
+        <CssBaseline />
+        <App />
+      </UserContextProvider>
     </ThemeProvider>
   </BrowserRouter>
 );

@@ -6,19 +6,18 @@ async function getMovieDetail(
   movie_id: string,
   moviesQueryParams?: MoviesQueryParams,
 ): Promise<APIMovieData | null> {
-  const authToken = localStorage.getItem("planet_auth_token");
+  const authToken = window.sessionStorage.getItem("planet_token");
 
-  if (authToken) {
-    const movieDetail: APIMovieData | undefined = await fetchMovieDetail(
-      authToken,
-      movie_id,
-      moviesQueryParams,
-    );
-    if (movieDetail) {
-      return movieDetail as APIMovieData;
-    }
-  }
-  return null;
+  if (!authToken) return null;
+
+  const movieDetail: APIMovieData | undefined = await fetchMovieDetail(
+    authToken,
+    movie_id,
+    moviesQueryParams,
+  );
+
+  if (!movieDetail) return null;
+  return movieDetail as APIMovieData;
 }
 
 async function fetchMovieDetail(

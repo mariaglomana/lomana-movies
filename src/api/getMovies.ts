@@ -6,19 +6,18 @@ import { getFormattedPreviewMovies } from "../utils";
 async function getMovies(
   moviesQueryParams?: MoviesQueryParams,
 ): Promise<MoviePreviewData[] | null> {
-  const authToken = localStorage.getItem("planet_auth_token");
+  const authToken = window.sessionStorage.getItem("planet_token");
 
-  if (authToken) {
-    const fetchedMovies: APIMovieData[] | undefined = await fetchMovies(
-      authToken,
-      moviesQueryParams,
-    );
-    if (fetchedMovies) {
-      const filteredMovies = getFormattedPreviewMovies(fetchedMovies);
-      return filteredMovies as MoviePreviewData[];
-    }
-  }
-  return null;
+  if (!authToken) return null;
+
+  const fetchedMovies: APIMovieData[] | undefined = await fetchMovies(
+    authToken,
+    moviesQueryParams,
+  );
+  if (!fetchedMovies) return null;
+
+  const filteredMovies = getFormattedPreviewMovies(fetchedMovies);
+  return filteredMovies as MoviePreviewData[];
 }
 
 async function fetchMovies(

@@ -6,18 +6,18 @@ import { getFormattedPreviewMovies } from "../utils";
 async function getUnratedRandomMovie(
   moviesQueryParams?: MoviesQueryParams,
 ): Promise<MoviePreviewData | null> {
-  const authToken = localStorage.getItem("planet_auth_token");
+  const authToken = window.sessionStorage.getItem("planet_token");
 
-  if (authToken) {
-    const fetchedMovie:
-      | APIMovieData
-      | undefined = await fetchUnratedRandomMovie(authToken, moviesQueryParams);
-    if (fetchedMovie) {
-      const filteredMovies = getFormattedPreviewMovies([fetchedMovie]);
-      return filteredMovies[0] as MoviePreviewData;
-    }
-  }
-  return null;
+  if (!authToken) return null;
+
+  const fetchedMovie: APIMovieData | undefined = await fetchUnratedRandomMovie(
+    authToken,
+    moviesQueryParams,
+  );
+  if (!fetchedMovie) return null;
+
+  const filteredMovies = getFormattedPreviewMovies([fetchedMovie]);
+  return filteredMovies[0] as MoviePreviewData;
 }
 
 async function fetchUnratedRandomMovie(

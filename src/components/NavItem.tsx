@@ -1,13 +1,16 @@
 /* eslint-disable indent */
-import { upperFirst } from "lodash";
+import { upperFirst, replace } from "lodash";
 import React from "react";
 import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import StarRateIcon from "@material-ui/icons/StarRate";
+
+import { useUser } from "../hooks";
 
 interface NavItemProps {
   name: string;
@@ -15,17 +18,25 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ name, onClose }) => {
-  const title = upperFirst(name);
-  const route = name === "home" ? "" : title;
+  const { signOut } = useUser();
+
+  const title = replace(upperFirst(name), "_", " ");
+  const route = name === "sign_out" ? "/" : `/${name}`;
+  const withIcon = name !== "home";
+
+  const handleClick = () => {
+    if (name === "sign_out") signOut();
+    onClose();
+  };
   return (
     <>
       <ListItem
         button
         key={name}
         component={Link}
-        to={`/${name}`}
-        onClick={() => onClose()}>
-        {route && <ListItemIcon>{renderMuiIcon(name)}</ListItemIcon>}
+        to={route}
+        onClick={handleClick}>
+        {withIcon && <ListItemIcon>{renderMuiIcon(name)}</ListItemIcon>}
         <ListItemText primary={title} />
       </ListItem>
     </>
@@ -40,6 +51,8 @@ function renderMuiIcon(name: string) {
       return <TheatersIcon />;
     case "rate":
       return <StarRateIcon />;
+    case "sign_out":
+      return <ExitToAppIcon />;
     default:
       return null;
   }

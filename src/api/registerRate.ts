@@ -6,7 +6,7 @@ async function registerRate(
   movie_id: string,
   score: number,
 ): Promise<APIResponse | undefined> {
-  const authToken = localStorage.getItem("planet_auth_token");
+  const authToken = window.sessionStorage.getItem("planet_token");
   if (!authToken) {
     return undefined;
   }
