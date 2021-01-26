@@ -42,7 +42,6 @@ export interface APIMovieData {
   url: string;
   poster_url: string;
 }
-
 export interface MoviesQueryParams {
   page?: number;
   size?: number;

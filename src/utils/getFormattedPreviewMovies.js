@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { map, sortBy } from "lodash";
+import { map } from "lodash";
 
 const PREVIEW_MOVIE_KEYS = ["id", "title", "year", "poster_url"];
 
@@ -15,8 +15,7 @@ const getFormattedPreviewMovies = (rawMovies) => {
       }, {});
 
   const formattedPreviewMovies = map(rawMovies, getFormattedMovie);
-  const orderedByTitlePreviewMovies = sortBy(formattedPreviewMovies, ["title"]);
-  return orderedByTitlePreviewMovies;
+  return formattedPreviewMovies;
 };
 
 export default getFormattedPreviewMovies;

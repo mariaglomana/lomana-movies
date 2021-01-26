@@ -1,18 +1,16 @@
 import axios from "axios";
-import { APIMovieData, MoviePreviewData, MoviesQueryParams } from "../types";
-import { BASE_URL, BASE_POST_USER_DATA } from "../host_backend";
+import { APIMovieData, MoviePreviewData } from "../types";
+import { BASE_URL } from "../host_backend";
 import { getFormattedPreviewMovies } from "../utils";
 
-async function getMovies(
-  moviesQueryParams?: MoviesQueryParams,
-): Promise<MoviePreviewData[] | null> {
+async function getMovies(page: number): Promise<MoviePreviewData[] | null> {
   const authToken = window.sessionStorage.getItem("planet_token");
 
   if (!authToken) return null;
 
   const fetchedMovies: APIMovieData[] | undefined = await fetchMovies(
     authToken,
-    moviesQueryParams,
+    page,
   );
   if (!fetchedMovies) return null;
 
@@ -22,17 +20,12 @@ async function getMovies(
 
 async function fetchMovies(
   authToken: string,
-  moviesQueryParams?: MoviesQueryParams,
+  page: number,
 ): Promise<APIMovieData[] | undefined> {
-  const url = `${BASE_URL}/movies`;
-  const params = JSON.stringify({
-    ...BASE_POST_USER_DATA,
-    ...moviesQueryParams,
-  });
+  const url = `${BASE_URL}/movies?size=30&order=title&direction=asc&page=${page}`;
   const headers = { Authorization: `Bearer ${authToken}` };
   try {
     const response = await axios.get(url, {
-      params,
       headers,
     });
     if (response?.status === 200) {
