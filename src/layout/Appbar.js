@@ -101,7 +101,7 @@ const MyDrawer = withStyles(styles)(
             <MovieDetail movie_id={match.params.movie_id} />
           )}
         />
-        <Redirect from="/" to="/home" />
+        <Redirect from="/" to="/movies" />
       </main>
     </>
   ),

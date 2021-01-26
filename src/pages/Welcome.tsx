@@ -1,50 +1,83 @@
 import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import theme from "../assets/theme";
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
-import verticalLogo from "../assets/images/logo_vertical.png";
-import { ReactComponent as PlanetLogo } from "../assets/images/planet_logo.svg";
+import logo from "../assets/images/logo.png";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
-    height: "100vh",
-    flex: 1,
-    justifyContent: "center",
+    marginTop: theme.spacing(12),
+    marginBottom: theme.spacing(4),
+    height: 500,
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
+    justifyContent: "space-around",
+  },
+  paper: {
+    marginTop: theme.spacing(16),
+    marginBottom: theme.spacing(4),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-end",
   },
   logo: {
     maxWidth: 300,
   },
+  copyright: {
+    marginTop: theme.spacing(4),
+  },
+  link: {
+    fontWeight: 700,
+    "&:hover": {
+      textDecoration: "none",
+      color: theme.palette.primary,
+    },
+  },
   marginBottom: {
-    marginBotton: theme.spacing(2),
+    marginBotton: theme.spacing(4),
   },
   marginTop: {
     marginTop: theme.spacing(2),
   },
-  column: {
+  btns_container: {
+    display: "flex",
     flexDirection: "column",
+    marginBotton: theme.spacing(10),
+    alignItems: "center",
   },
-});
+}));
 
 function Copyright() {
   const classes = useStyles();
   return (
-    <Box className={classes.marginTop}>
-      <Typography variant="body2" color="textSecondary">
-        {"Code test for Frontend Position at "}
+    <Box className={classes.copyright}>
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        component="span"
+        style={{ flexDirection: "row" }}>
+        {"Made with 💜 by "}
         <Link
-          href="https://www.planetdataset.com/"
+          href="https://www.linkedin.com/in/mariagarciadelomana/"
           target="_blank"
           rel="noreferrer"
-          aria-label="go to PlanetDataset">
-          <PlanetLogo style={{ height: 15, width: "auto" }} />
+          aria-label="go to mariaglomana linkedin"
+          className={classes.link}
+          underline="none">
+          <Typography
+            variant="body2"
+            component="span"
+            className={classes.link}
+            color="textSecondary">
+            {"mariaglomana"}
+          </Typography>
         </Link>
-        {`  - ${new Date().getFullYear()}`}.
+        {` - ${new Date().getFullYear()}`}.
       </Typography>
     </Box>
   );
@@ -53,38 +86,41 @@ function Copyright() {
 const Welcome: React.FC = () => {
   const classes = useStyles();
   return (
-    <Container maxWidth="sm" className={classes.container}>
-      <Typography variant="h2" color="textPrimary" gutterBottom>
-        Welcome to
-      </Typography>
-      <img src={verticalLogo} className={classes.logo} alt="Logo" />
-      <Box className={classes.column}>
-        <Button
-          component={RouterLink}
-          to="/sign_up"
-          variant="contained"
-          color="primary"
-          aria-label="sign up"
-          className={classes.marginTop}>
-          Create new account
-        </Button>
-        <Typography
-          variant="body2"
-          color="textPrimary"
-          className={classes.marginBottom}>
-          Already have an account?
+    <Box component="main" maxWidth="sm" className={classes.container}>
+      <div>
+        <Typography variant="h2" color="textPrimary">
+          Welcome to
+        </Typography>
+        <img src={logo} className={classes.logo} alt="Logo" />
+      </div>
+      <div>
+        <Box className={classes.btns_container}>
           <Button
             component={RouterLink}
-            to="/sign_in"
-            variant="text"
-            color="secondary"
-            aria-label="sign in">
-            Sign in
+            to="/sign_up"
+            variant="contained"
+            color="primary"
+            aria-label="sign up">
+            Create new account
           </Button>
-        </Typography>
-      </Box>
-      <Copyright />
-    </Container>
+          <Typography
+            variant="body2"
+            color="textPrimary"
+            className={classes.marginTop}>
+            Already have an account?
+            <Button
+              component={RouterLink}
+              to="/sign_in"
+              variant="text"
+              color="secondary"
+              aria-label="sign in">
+              Sign in
+            </Button>
+          </Typography>
+        </Box>
+        <Copyright />
+      </div>
+    </Box>
   );
 };
 export default Welcome;
