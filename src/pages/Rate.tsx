@@ -33,7 +33,7 @@ const Rate: React.FC = () => {
       if (movie) {
         setUnratedMovie(movie as MoviePreviewData);
       } else {
-        history.push("/welcome");
+        history.push("/");
       }
     };
 

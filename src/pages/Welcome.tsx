@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
+
 import logo from "../assets/images/logo.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -91,7 +92,7 @@ const Welcome: React.FC = () => {
         <Typography variant="h2" color="textPrimary">
           Welcome to
         </Typography>
-        <img src={logo} className={classes.logo} alt="Logo" />
+        <img src={logo} className={classes.logo} alt="Movies Logo" />
       </div>
       <div>
         <Box className={classes.btns_container}>

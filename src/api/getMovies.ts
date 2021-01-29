@@ -4,7 +4,7 @@ import { BASE_URL } from "../host_backend";
 import { getFormattedPreviewMovies } from "../utils";
 
 async function getMovies(page: number): Promise<MoviePreviewData[] | null> {
-  const authToken = window.sessionStorage.getItem("planet_token");
+  const authToken = window.sessionStorage.getItem("jwt_movies");
 
   if (!authToken) return null;
 

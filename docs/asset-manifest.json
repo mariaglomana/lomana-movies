@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/lomana-movies/static/css/main.e8a152d5.chunk.css",
+    "main.js": "/lomana-movies/static/js/main.fe0abc5f.chunk.js",
+    "main.js.map": "/lomana-movies/static/js/main.fe0abc5f.chunk.js.map",
+    "runtime-main.js": "/lomana-movies/static/js/runtime-main.647e6e8a.js",
+    "runtime-main.js.map": "/lomana-movies/static/js/runtime-main.647e6e8a.js.map",
+    "static/js/2.64f27e6d.chunk.js": "/lomana-movies/static/js/2.64f27e6d.chunk.js",
+    "static/js/2.64f27e6d.chunk.js.map": "/lomana-movies/static/js/2.64f27e6d.chunk.js.map",
+    "index.html": "/lomana-movies/index.html",
+    "static/css/main.e8a152d5.chunk.css.map": "/lomana-movies/static/css/main.e8a152d5.chunk.css.map",
+    "static/js/2.64f27e6d.chunk.js.LICENSE.txt": "/lomana-movies/static/js/2.64f27e6d.chunk.js.LICENSE.txt",
+    "static/media/imdb.50cc2796.png": "/lomana-movies/static/media/imdb.50cc2796.png",
+    "static/media/logo.6235333c.png": "/lomana-movies/static/media/logo.6235333c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.647e6e8a.js",
+    "static/js/2.64f27e6d.chunk.js",
+    "static/css/main.e8a152d5.chunk.css",
+    "static/js/main.fe0abc5f.chunk.js"
+  ]
+}

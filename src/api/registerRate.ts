@@ -6,7 +6,7 @@ async function registerRate(
   movie_id: string,
   score: number,
 ): Promise<APIResponse | undefined> {
-  const authToken = window.sessionStorage.getItem("planet_token");
+  const authToken = window.sessionStorage.getItem("jwt_movies");
   if (!authToken) {
     return undefined;
   }

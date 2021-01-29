@@ -6,7 +6,7 @@ async function getMovieDetail(
   movie_id: string,
   moviesQueryParams?: MoviesQueryParams,
 ): Promise<APIMovieData | null> {
-  const authToken = window.sessionStorage.getItem("planet_token");
+  const authToken = window.sessionStorage.getItem("jwt_movies");
 
   if (!authToken) return null;
 

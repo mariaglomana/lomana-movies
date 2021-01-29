@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# Movies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project lets a user download a list of movies and filter the results by the title, rate random movies, and see a detailed view of a precise movie of its interest. In order to have access to this content, the user will have to create an account but its data will be available and editable from the profile section of the application.
 
-## Available Scripts
+## Instalation
 
-In the project directory, you can run:
+To run the app in the development mode, open the project directory and run:
 
-### `npm start`
+```
+`npm start`
+```
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Libraries
 
-### `npm test`
+- [Material UI](https://material-ui.com/) (based in MaterialDesign design system): since there were no previous design or prototype to follow, I considered important to use this library in order to achieve the best user experience as possible.
+- [Axios](https://github.com/axios/axios): one of the most used promise based HTTP client for the browser and node.js, with some advantages over an standard fetch call, such as enable client-side protection against XSRF.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pages
 
-### `npm run build`
+- [Welcome](http://localhost:3000/welcome): landing page with links to sign up and sign in.
+- [Sign up](http://localhost:3000/sign_up): it lets user create a new account.
+- [Sign in](http://localhost:3000/sign_in): it lets user log in with an email and password.
+- [Movies](http://localhost:3000/movies): shows a list of movies and lets user filter the results by the movie title and load more movies by clicking a button.
+- [Rate](http://localhost:3000/rate): shows a random movie for the user to rate. Both in movies and rate section, it is possible to see a detail view of a movie by clicking on the info button of a movie card.
+- [Profile](http://localhost:3000/profile): shows the information associated to the user's account and lets him edit the registered first name, second name or password.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Authorization token (jwt)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The auth token is given by the api, inside the response of a successful user's sign up and sign in.
+The useUser hook will be responsible for saving it (or deleting in the case of the log out) in the browser storage using `Window.sessionStorage`.
+The conexion between the useUser and the components in charge of listening the auth events is made through a useContext hook (userContext), as well as the redirection between the private and public pages when required.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Pending improvements
 
-### `npm run eject`
+Some of the improvements that could have been implemented are:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Display of a list of the higheest rated movies.
+- Let user saved an unrated movie inside a Watchlist.
+- Create statistics on user's movies preferences by analyzing the rated movies.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are very welcome! Please open a Pull Request or contact me at [linkedin](https://www.linkedin.com/in/mariagarciadelomana/).

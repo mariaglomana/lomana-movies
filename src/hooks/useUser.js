@@ -14,12 +14,12 @@ export default function useUser() {
         .then((apiResponse) => {
           console.log("apiResponse", apiResponse);
           const token = apiResponse.data.token;
-          window.sessionStorage.setItem("planet_token", token);
+          window.sessionStorage.setItem("jwt_movies", token);
           setState({ loading: false, error: false });
           setJWT(token);
         })
         .catch(() => {
-          window.sessionStorage.removeItem("planet_token");
+          window.sessionStorage.removeItem("jwt_movies");
           setState({ loading: false, error: true });
         });
     },
@@ -32,12 +32,12 @@ export default function useUser() {
       registerUser(user)
         .then((apiResponse) => {
           const token = apiResponse.data.token;
-          window.sessionStorage.setItem("planet_token", token);
+          window.sessionStorage.setItem("jwt_movies", token);
           setState({ loading: false, error: false });
           setJWT(token);
         })
         .catch(() => {
-          window.sessionStorage.removeItem("planet_token");
+          window.sessionStorage.removeItem("jwt_movies");
           setState({ loading: false, error: true });
         });
       setJWT("test");
@@ -46,7 +46,7 @@ export default function useUser() {
   );
 
   const signOut = useCallback(() => {
-    window.sessionStorage.removeItem("planet_token");
+    window.sessionStorage.removeItem("jwt_movies");
     setJWT(null);
   }, [setJWT]);
 

@@ -8,8 +8,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 
-import imdbLogo from "../assets/images/imdb.png";
 import { dataParam } from "../types";
+import imdb from "../assets/images/imdb.png";
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -59,7 +59,7 @@ const Sidebar: React.FC<SidebarProps> = ({ title, data, url }) => {
         aria-label="go to movie detail at IMDb">
         <Grid container direction="row" spacing={1} alignItems="center">
           <Grid item>
-            <LogoImg src={imdbLogo} alt="Planet Movies Logo" />
+            <LogoImg src={imdb} alt="IMDb Logo" />
           </Grid>
           <Grid item>See more</Grid>
         </Grid>

@@ -10,11 +10,11 @@ export const LogoImg = styled.img`
 `;
 const HeaderLogo: React.FC = () => (
   <Link
-    href="https://www.planetdataset.com/"
+    href="https://www.linkedin.com/in/mariagarciadelomana/"
     target="_blank"
     rel="noreferrer"
-    aria-label="go to PlanetDataset">
-    <LogoImg src={logo} alt="Planet Movies Logo" />
+    aria-label="go to Lomana's linkedin">
+    <LogoImg src={logo} alt="Movies Logo" />
   </Link>
 );
 

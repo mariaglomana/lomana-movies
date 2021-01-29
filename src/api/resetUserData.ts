@@ -5,7 +5,7 @@ import { BASE_URL } from "../host_backend";
 async function resetUserData(
   user: Omit<User, "id" | "email">,
 ): Promise<User | undefined> {
-  const authToken = window.sessionStorage.getItem("planet_token");
+  const authToken = window.sessionStorage.getItem("jwt_movies");
 
   const url = `${BASE_URL}/users/profile`;
   const params = { user };

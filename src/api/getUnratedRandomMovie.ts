@@ -6,7 +6,7 @@ import { getFormattedPreviewMovies } from "../utils";
 async function getUnratedRandomMovie(
   moviesQueryParams?: MoviesQueryParams,
 ): Promise<MoviePreviewData | null> {
-  const authToken = window.sessionStorage.getItem("planet_token");
+  const authToken = window.sessionStorage.getItem("jwt_movies");
 
   if (!authToken) return null;
 

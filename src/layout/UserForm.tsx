@@ -64,7 +64,7 @@ const typeMap = {
     ]),
     primary_btn: "Sign in",
     secondary_btn: {
-      text: "New at Planet Movies?",
+      text: "New at Lomana Movies?",
       action: "Sign up",
     },
   },

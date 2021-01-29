@@ -3,7 +3,7 @@ import { User } from "../types";
 import { BASE_URL } from "../host_backend";
 
 async function getUserData(): Promise<User | undefined> {
-  const authToken = window.sessionStorage.getItem("planet_token");
+  const authToken = window.sessionStorage.getItem("jwt_movies");
 
   const url = `${BASE_URL}/users/profile`;
   const headers = { Authorization: `Bearer ${authToken}` };

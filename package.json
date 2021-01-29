@@ -1,7 +1,8 @@
 {
-  "name": "planet-code-test",
+  "name": "lomana-movies",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mariaglomana.github.io/lomana-movies",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
@@ -28,7 +29,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -51,6 +54,7 @@
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "gh-pages": "^3.1.0",
     "prettier": "^2.2.1"
   }
 }
