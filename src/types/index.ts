@@ -63,6 +63,14 @@ export interface dataParam {
   value: any;
 }
 
+//RATINGS
+
+export interface Rating {
+  id: string;
+  score: number;
+  movie: APIMovieData;
+}
+
 //NAVIGATION
 interface MovieDetailMatchParams {
   movie_id: string;

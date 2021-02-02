@@ -12,7 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
 
-import { Home, Movies, Rate, Profile, MovieDetail } from "../pages";
+import { Home, Movies, Rate, Favorites, Profile, MovieDetail } from "../pages";
 
 import { NavItem, HeaderLogo } from "../components";
 
@@ -85,6 +85,7 @@ const MyDrawer = withStyles(styles)(
           <NavItem name="home" onClose={onClose} />
           <NavItem name="movies" onClose={onClose} />
           <NavItem name="rate" onClose={onClose} />
+          <NavItem name="favorites" onClose={onClose} />
           <NavItem name="profile" onClose={onClose} />
           <NavItem name="sign_out" onClose={onClose} />
         </List>
@@ -93,6 +94,7 @@ const MyDrawer = withStyles(styles)(
         <Route exact path="/home" component={Home} />
         <Route exact path="/movies" component={Movies} />
         <Route exact path="/rate" component={Rate} />
+        <Route exact path="/favorites" component={Favorites} />
         <Route exact path="/profile" component={Profile} />
         <Route
           exact

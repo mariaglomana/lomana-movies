@@ -6,3 +6,4 @@ export { default as getMovieDetail } from "./getMovieDetail";
 export { default as getMovies } from "./getMovies";
 export { default as getUnratedRandomMovie } from "./getUnratedRandomMovie";
 export { default as registerRate } from "./registerRate";
+export { default as getRatings } from "./getRatings";

@@ -3,12 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./assets/css/index.css";
 import { Appbar } from "./layout";
-import { Welcome, SignIn, SignUp, Home } from "./pages";
+import { Welcome, SignIn, SignUp } from "./pages";
 import { useUser } from "./hooks";
 
 const App = (): React.ReactElement => {
   const { isLogged } = useUser();
-  console.log("isLogged ff", isLogged);
   return (
     <Router>
       <div className="App">

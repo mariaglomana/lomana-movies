@@ -6,6 +6,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import StarRateIcon from "@material-ui/icons/StarRate";
@@ -51,6 +52,8 @@ function renderMuiIcon(name: string) {
       return <TheatersIcon />;
     case "rate":
       return <StarRateIcon />;
+    case "favorites":
+      return <FavoriteIcon />;
     case "sign_out":
       return <ExitToAppIcon />;
     default:

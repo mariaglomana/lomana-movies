@@ -16,8 +16,6 @@ const Movies: React.FC = () => {
   const loadMovies = async () => {
     const fetchedMovies = await getMovies(numPages);
     if (fetchedMovies) {
-      console.log("numPages", numPages);
-      console.log("movies", movies);
       const newMovies = movies.length
         ? concat(movies, fetchedMovies)
         : fetchedMovies;

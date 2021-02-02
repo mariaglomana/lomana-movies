@@ -12,7 +12,6 @@ export default function useUser() {
       setState({ loading: true, error: false });
       loginUser(user)
         .then((apiResponse) => {
-          console.log("apiResponse", apiResponse);
           const token = apiResponse.data.token;
           window.sessionStorage.setItem("jwt_movies", token);
           setState({ loading: false, error: false });
