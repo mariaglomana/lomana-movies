@@ -1,27 +1,37 @@
 import React from "react";
+import clsx from "clsx";
+import { range } from "lodash";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorder from "@material-ui/icons/StarBorder";
 import Star from "@material-ui/icons/Star";
+
+import { RATING_MAX_SCORE } from "../types";
 
 const useStyles = makeStyles(() =>
   createStyles({
     input: {
       display: "none",
     },
+    star: {
+      color: "#f1c40f",
+    },
+    active_star: {
+      color: "#4762ff",
+    },
   }),
 );
 
-interface RateGroupButtonsProps {
+interface StarGroupButtonsProps {
   selectedValue?: number;
   handleClickStar: (i: number) => void;
 }
 
-const StarGroupButtons: React.FC<RateGroupButtonsProps> = ({
+const StarGroupButtons: React.FC<StarGroupButtonsProps> = ({
   selectedValue,
   handleClickStar,
 }) => {
-  const values = [1, 2, 3, 4, 5];
+  const values = range(1, RATING_MAX_SCORE + 1);
   return (
     <div>
       {values.map((value, i) => (
@@ -55,15 +65,17 @@ const StarButton = ({
       />
       <label htmlFor={`icon-button-star-${value}`}>
         <IconButton
-          color="primary"
           aria-label={`give rate ${value}`}
           disabled={!!selectedValue}
           component="span"
           onClick={() => handleClickStar(value)}>
           {!!selectedValue && selectedValue >= value ? (
-            <Star />
+            <Star className={classes.star} />
           ) : (
-            <StarBorder />
+            <StarBorder
+              color="primary"
+              className={clsx(!!selectedValue && classes.star)}
+            />
           )}
         </IconButton>
       </label>

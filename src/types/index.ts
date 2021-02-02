@@ -65,6 +65,7 @@ export interface dataParam {
 
 //RATINGS
 
+export const RATING_MAX_SCORE = 5;
 export interface Rating {
   id: string;
   score: number;
