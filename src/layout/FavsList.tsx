@@ -4,18 +4,14 @@ import { groupBy, range } from "lodash";
 import { makeStyles } from "@material-ui/core/styles";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import Grid from "@material-ui/core/Grid";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Divider from "@material-ui/core/Divider";
 import Star from "@material-ui/icons/Star";
 import InfoIcon from "@material-ui/icons/Info";
 
 import { Rating, RATING_MAX_SCORE } from "types";
+import { MovieListItem } from "components";
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -72,15 +68,10 @@ const FavsList: React.FC<FavsListProps> = ({ ratings }) => {
             </Grid>
             <Grid item xs={12} sm={6} md={8} className={classes.column}>
               {groupedRatings[score].map((rating) => (
-                <ListItem key={rating.id}>
-                  <ListItemAvatar>
-                    <Avatar
-                      alt={`${rating.movie.title} avatar`}
-                      src={rating.movie.poster_url}
-                    />
-                  </ListItemAvatar>
-                  <ListItemText primary={rating.movie.title} />
-                  <ListItemSecondaryAction>
+                <MovieListItem
+                  key={rating.id}
+                  movie={rating.movie}
+                  secondaryAction={
                     <IconButton
                       edge="end"
                       component={Link}
@@ -89,8 +80,8 @@ const FavsList: React.FC<FavsListProps> = ({ ratings }) => {
                       color="secondary">
                       <InfoIcon />
                     </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
+                  }
+                />
               ))}
             </Grid>
           </Grid>
