@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import StarBorder from "@material-ui/icons/StarBorder";
 import Star from "@material-ui/icons/Star";
 
-import { RATING_MAX_SCORE } from "../types";
+import { RATING_MAX_SCORE } from "types";
 
 const useStyles = makeStyles(() =>
   createStyles({

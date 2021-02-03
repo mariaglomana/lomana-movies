@@ -2,7 +2,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import { StarGroupButtons } from "../components";
+import { StarGroupButtons } from "components";
 
 interface ActionRateGroupButtonsProps {
   rate?: number;

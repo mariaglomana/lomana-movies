@@ -7,10 +7,10 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { Rating } from "../types";
-import { PageContainer } from "../components";
-import { FavsList } from "../layout";
-import { getRatings } from "../api";
+import { Rating } from "types";
+import { PageContainer } from "components";
+import { FavsList } from "layout";
+import { getRatings } from "api";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

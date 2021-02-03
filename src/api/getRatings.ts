@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Rating } from "../types";
-import { BASE_URL } from "../host_backend";
+import { Rating } from "types";
+import { BASE_URL } from "host_backend";
 
 async function getRatings(): Promise<Rating[] | undefined> {
   const authToken = window.sessionStorage.getItem("jwt_movies");

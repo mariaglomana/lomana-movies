@@ -1,7 +1,7 @@
 import axios from "axios";
-import { APIMovieData, MoviePreviewData, MoviesQueryParams } from "../types";
-import { BASE_URL, BASE_POST_USER_DATA } from "../host_backend";
-import { getFormattedPreviewMovies } from "../utils";
+import { APIMovieData, MoviePreviewData, MoviesQueryParams } from "types";
+import { BASE_URL, BASE_POST_USER_DATA } from "host_backend";
+import { getFormattedPreviewMovies } from "utils";
 
 async function getUnratedRandomMovie(
   moviesQueryParams?: MoviesQueryParams,

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { User, APIResponse } from "../types";
-import { BASE_URL, BASE_POST_USER_DATA } from "../host_backend";
+import { User, APIResponse } from "types";
+import { BASE_URL, BASE_POST_USER_DATA } from "host_backend";
 
 async function registerUser(
   user: Omit<User, "id">,

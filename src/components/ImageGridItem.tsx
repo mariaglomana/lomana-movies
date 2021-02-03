@@ -6,7 +6,7 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
 
-import { MoviePreviewData } from "../types";
+import { MoviePreviewData } from "types";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

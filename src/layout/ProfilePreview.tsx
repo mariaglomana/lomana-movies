@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import { User } from "../types";
+import { User } from "types";
 
 const useStyles = makeStyles((theme) => ({
   description: {

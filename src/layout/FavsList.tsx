@@ -15,7 +15,7 @@ import Divider from "@material-ui/core/Divider";
 import Star from "@material-ui/icons/Star";
 import InfoIcon from "@material-ui/icons/Info";
 
-import { Rating, RATING_MAX_SCORE } from "../types";
+import { Rating, RATING_MAX_SCORE } from "types";
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {

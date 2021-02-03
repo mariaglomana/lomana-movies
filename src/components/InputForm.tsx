@@ -9,8 +9,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import theme from "../assets/theme";
-import { ErrorMessage } from "../components";
+import theme from "assets/theme";
+import { ErrorMessage } from "components";
 
 const useStyles = makeStyles({
   margin: {

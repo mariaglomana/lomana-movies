@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { concat } from "lodash";
 import { useHistory } from "react-router-dom";
 
-import { MoviesSearchForm } from "../layout";
-import { MoviePreviewData } from "../types";
-import { PageContainer } from "../components";
-import { getMovies } from "../api";
+import { MoviesSearchForm } from "layout";
+import { MoviePreviewData } from "types";
+import { PageContainer } from "components";
+import { getMovies } from "api";
 
 const Movies: React.FC = () => {
   const history = useHistory();

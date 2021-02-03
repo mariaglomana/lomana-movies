@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { PageContainer } from "../components";
+import { PageContainer } from "components";
 
 const Home: React.FC = () => {
   return (

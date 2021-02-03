@@ -1,6 +1,6 @@
 import axios from "axios";
-import { APIMovieData, MoviesQueryParams } from "../types";
-import { BASE_URL, BASE_POST_USER_DATA } from "../host_backend";
+import { APIMovieData, MoviesQueryParams } from "types";
+import { BASE_URL, BASE_POST_USER_DATA } from "host_backend";
 
 async function getMovieDetail(
   movie_id: string,

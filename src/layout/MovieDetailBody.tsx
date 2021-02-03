@@ -4,9 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Grid from "@material-ui/core/Grid";
 
-import { APIMovieData } from "../types";
-import { TextParagraph, Sidebar } from "../components";
-import { APIMovieDataKeys } from "../types";
+import { APIMovieData } from "types";
+import { TextParagraph, Sidebar } from "components";
+import { APIMovieDataKeys } from "types";
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
-import { MoviePreviewData } from "../types";
-import { PageContainer, ImageGridItem } from "../components";
-import { ActionRateGroupButtons } from "../layout";
-import { getUnratedRandomMovie, registerRate } from "../api";
+import { MoviePreviewData } from "types";
+import { PageContainer, ImageGridItem } from "components";
+import { ActionRateGroupButtons } from "layout";
+import { getUnratedRandomMovie, registerRate } from "api";
 
 const Rate: React.FC = () => {
   const history = useHistory();

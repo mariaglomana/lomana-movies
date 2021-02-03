@@ -1,7 +1,7 @@
 import axios from "axios";
-import { APIMovieData, MoviePreviewData } from "../types";
-import { BASE_URL } from "../host_backend";
-import { getFormattedPreviewMovies } from "../utils";
+import { APIMovieData, MoviePreviewData } from "types";
+import { BASE_URL } from "host_backend";
+import { getFormattedPreviewMovies } from "utils";
 
 async function getMovies(page: number): Promise<MoviePreviewData[] | null> {
   const authToken = window.sessionStorage.getItem("jwt_movies");

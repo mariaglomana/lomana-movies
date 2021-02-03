@@ -1,6 +1,6 @@
 import axios from "axios";
-import { User } from "../types";
-import { BASE_URL } from "../host_backend";
+import { User } from "types";
+import { BASE_URL } from "host_backend";
 
 async function getUserData(): Promise<User | undefined> {
   const authToken = window.sessionStorage.getItem("jwt_movies");

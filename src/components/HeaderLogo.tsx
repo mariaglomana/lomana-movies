@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Link from "@material-ui/core/Link";
-import logo from "../assets/images/logo.png";
+import logo from "assets/images/logo.png";
 
 export const LogoImg = styled.img`
   width: 100px;

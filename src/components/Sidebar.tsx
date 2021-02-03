@@ -8,8 +8,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 
-import { dataParam } from "../types";
-import imdb from "../assets/images/imdb.png";
+import { dataParam } from "types";
+import imdb from "assets/images/imdb.png";
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {

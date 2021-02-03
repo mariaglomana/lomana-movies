@@ -8,9 +8,9 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 
-import theme from "../assets/theme";
-import { MoviePreviewData } from "../types";
-import { ImageGridList } from "../components";
+import theme from "assets/theme";
+import { MoviePreviewData } from "types";
+import { ImageGridList } from "components";
 
 const useStyles = makeStyles({
   container: {

@@ -12,9 +12,9 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
 
-import { Home, Movies, Rate, Favorites, Profile, MovieDetail } from "../pages";
+import { Home, Movies, Rate, Favorites, Profile, MovieDetail } from "pages";
 
-import { NavItem, HeaderLogo } from "../components";
+import { NavItem, HeaderLogo } from "components";
 
 const drawerWidth = 240;
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { useCallback, useContext, useState } from "react";
-import { loginUser, registerUser } from "../api";
-import Context from "../context/UserContext";
+import { loginUser, registerUser } from "api";
+import Context from "context/UserContext";
 
 export default function useUser() {
   const { jwt, setJWT } = useContext(Context);

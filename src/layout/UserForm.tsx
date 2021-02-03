@@ -7,16 +7,16 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import theme from "../assets/theme";
-import { User } from "../types";
+import theme from "assets/theme";
+import { User } from "types";
 import {
   getFormattedFormState,
   validationFormSchema,
   getInitialFormState,
-} from "../utils";
-import { resetUserData } from "../api";
-import { useForm, useUser } from "../hooks";
-import { InputForm } from "../components";
+} from "utils";
+import { resetUserData } from "api";
+import { useForm, useUser } from "hooks";
+import { InputForm } from "components";
 
 const useStyles = makeStyles({
   paper: {

@@ -11,7 +11,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import StarRateIcon from "@material-ui/icons/StarRate";
 
-import { useUser } from "../hooks";
+import { useUser } from "hooks";
 
 interface NavItemProps {
   name: string;

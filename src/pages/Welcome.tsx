@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 
-import logo from "../assets/images/logo.png";
+import logo from "assets/images/logo.png";
 
 const useStyles = makeStyles((theme) => ({
   container: {

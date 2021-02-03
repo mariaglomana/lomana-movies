@@ -1,6 +1,6 @@
 import axios from "axios";
-import { APIResponse } from "../types";
-import { BASE_URL } from "../host_backend";
+import { APIResponse } from "types";
+import { BASE_URL } from "host_backend";
 
 async function registerRate(
   movie_id: string,

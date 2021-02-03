@@ -4,7 +4,7 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import ListSubheader from "@material-ui/core/ListSubheader";
 
-import { MoviePreviewData } from "../types";
+import { MoviePreviewData } from "types";
 import ImageGridItem from "./ImageGridItem";
 
 const useStyles = makeStyles((theme: Theme) =>

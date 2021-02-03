@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
-import { User } from "../types";
-import { BASE_URL, BASE_POST_USER_DATA } from "../host_backend";
+import { User } from "types";
+import { BASE_URL, BASE_POST_USER_DATA } from "host_backend";
 
 async function loginUser(
   user: Omit<User, "id" | "first_name" | "last_name">,
