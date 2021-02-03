@@ -56,7 +56,6 @@ const FavsList: React.FC<FavsListProps> = ({ ratings }) => {
     RATING_MAX_SCORE - 1,
     RATING_MAX_SCORE - 2,
   ];
-  console.log("groupedRatings", groupedRatings);
   return (
     <section style={{ width: "100%" }}>
       {favsScores.map((score) => (
