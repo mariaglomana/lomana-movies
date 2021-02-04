@@ -6,7 +6,7 @@ import { StarGroupButtons } from "components";
 
 interface ActionRateGroupButtonsProps {
   rate?: number;
-  loadRandomMovie: () => void;
+  changeMovies: () => void;
   setRate: (rate?: number) => void;
   handleSaveRate: () => void;
   handleClickStar: (i: number) => void;
@@ -14,7 +14,7 @@ interface ActionRateGroupButtonsProps {
 
 const ActionRateGroupButtons: React.FC<ActionRateGroupButtonsProps> = ({
   rate,
-  loadRandomMovie,
+  changeMovies,
   setRate,
   handleSaveRate,
   handleClickStar,
@@ -29,9 +29,9 @@ const ActionRateGroupButtons: React.FC<ActionRateGroupButtonsProps> = ({
           style={{ margin: 20 }}
           variant="outlined"
           color="secondary"
-          aria-label="Change the film"
-          onClick={loadRandomMovie}>
-          Change the film
+          aria-label="Change the movies"
+          onClick={changeMovies}>
+          Change the movies
         </Button>
       ) : (
         <>
