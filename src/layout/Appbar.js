@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import clsx from "clsx";
 import { Route, Redirect } from "react-router-dom";
 
@@ -11,10 +11,16 @@ import List from "@material-ui/core/List";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
-
-import { Home, Movies, Rate, Favorites, Profile, MovieDetail } from "pages";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { NavItem, HeaderLogo } from "components";
+import { Movies } from "pages";
+
+const Home = React.lazy(() => import("pages/Home"));
+const Rate = React.lazy(() => import("pages/Rate"));
+const Favorites = React.lazy(() => import("pages/Favorites"));
+const Profile = React.lazy(() => import("pages/Profile"));
+const MovieDetail = React.lazy(() => import("pages/MovieDetail"));
 
 const drawerWidth = 240;
 
@@ -125,14 +131,16 @@ function AppBarInteraction({ classes, variant }) {
 
   return (
     <Box className={classes.root}>
-      <MyToolbar title={title} onMenuClick={toggleDrawer} />
-      <MyDrawer
-        open={drawer}
-        onClose={toggleDrawer}
-        onItemClick={onItemClick}
-        variant={variant}
-        anchor={"right"}
-      />
+      <Suspense fallback={<CircularProgress />}>
+        <MyToolbar title={title} onMenuClick={toggleDrawer} />
+        <MyDrawer
+          open={drawer}
+          onClose={toggleDrawer}
+          onItemClick={onItemClick}
+          variant={variant}
+          anchor={"right"}
+        />
+      </Suspense>
     </Box>
   );
 }
