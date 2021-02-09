@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { startCase, filter, includes, toLower } from "lodash";
-import Typography from "@material-ui/core/Typography";
+import React from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import Box from "@material-ui/core/Box";
-import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import theme from "assets/theme";
-import { MoviePreviewData } from "types";
-import { ImageGridList } from "components";
+import { useMovies } from "hooks";
+import { ImageGridList, MoviesInputSearch } from "components";
 
 const useStyles = makeStyles({
   container: {
@@ -36,83 +33,49 @@ const useStyles = makeStyles({
     marginBottom: theme.spacing(4),
     marginRight: 10,
   },
+  centered: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: theme.spacing(12),
+  },
 });
 
-interface MoviesSearchFormProps {
-  movies: MoviePreviewData[];
-  loadMovies: () => void;
-}
-
-const MoviesSearchForm: React.FC<MoviesSearchFormProps> = ({
-  movies,
-  loadMovies,
-}) => {
+const MoviesSearchForm: React.FC = () => {
   const classes = useStyles();
-  const [inputTitle, setInputTitle] = useState<string>("");
-  const [filteredMovies, setFilteredMovies] = useState<MoviePreviewData[]>([]);
 
-  const imgGridTitle = !inputTitle
-    ? "All the available movies"
-    : "Filtered results";
-  const moviesToDisplay = !inputTitle ? movies : filteredMovies;
+  const {
+    loading,
+    moviesToDisplay,
+    title,
+    handleChangeTitle,
+    loadMovies,
+  } = useMovies();
 
-  const filterByTitle = (text: string) => {
-    return filter(movies, (movie) =>
-      includes(toLower(movie.title), toLower(text)),
-    );
-  };
-
-  const filterMovies = (text: string) => {
-    if (movies.length) {
-      const newFiltered = filterByTitle(text);
-      setFilteredMovies(newFiltered);
-    }
-  };
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputText = event.target.value;
-    setInputTitle(inputText);
-    filterMovies(inputText);
-  };
-
-  useEffect(() => {
-    filterMovies(inputTitle);
-  }, [movies]);
+  const imgGridTitle = !title ? "All the available movies" : "Filtered results";
 
   return (
     <div className={classes.container}>
-      <Box m={3}>
-        <Typography component="h6" paragraph>
-          Filter your movies by title:
-        </Typography>
-        <form className={classes.form} noValidate>
-          <FormControl fullWidth className={classes.margin}>
-            <OutlinedInput
-              id="filter-by-title"
-              value={startCase(inputTitle)}
-              name="first_name"
-              onChange={handleInputChange}
-              aria-describedby="title"
-              inputProps={{
-                "aria-label": "title",
-              }}
-              autoFocus
-              placeholder="Title"
-              aria-placeholder="Title"
-            />
-          </FormControl>
-        </form>
-      </Box>
-      <ImageGridList title={imgGridTitle} data={moviesToDisplay} />
-      <div className={classes.button}>
-        <Button
-          variant="contained"
-          color="secondary"
-          aria-label="More movies"
-          endIcon={<AddIcon />}
-          onClick={loadMovies}>
-          More movies
-        </Button>
-      </div>
+      <MoviesInputSearch title={title} handleChangeTitle={handleChangeTitle} />
+      {loading ? (
+        <div className={classes.centered}>
+          <CircularProgress />
+        </div>
+      ) : (
+        <>
+          <ImageGridList title={imgGridTitle} data={moviesToDisplay} />
+          <div className={classes.button}>
+            <Button
+              variant="contained"
+              color="secondary"
+              aria-label="More movies"
+              endIcon={<AddIcon />}
+              onClick={loadMovies}>
+              More movies
+            </Button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

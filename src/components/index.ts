@@ -12,3 +12,4 @@ export { default as InputForm } from "./InputForm";
 export { default as SignPageContainer } from "./SignPageContainer";
 export { default as MovieListItem } from "./MovieListItem";
 export { default as RateCounterMessage } from "./RateCounterMessage";
+export { default as MoviesInputSearch } from "./MoviesInputSearch";
