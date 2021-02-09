@@ -12,7 +12,7 @@ async function getMovies(page: number): Promise<MoviePreviewData[] | null> {
     authToken,
     page,
   );
-  if (!fetchedMovies) return null;
+  if (!fetchedMovies || !fetchedMovies.length) return null;
 
   const filteredMovies = getFormattedPreviewMovies(fetchedMovies);
   return filteredMovies as MoviePreviewData[];
@@ -22,7 +22,7 @@ async function fetchMovies(
   authToken: string,
   page: number,
 ): Promise<APIMovieData[] | undefined> {
-  const url = `${BASE_URL}/movies?size=30&order=title&direction=asc&page=${page}`;
+  const url = `${BASE_URL}/movies?size=15&order=title&direction=asc&page=${page}`;
   const headers = { Authorization: `Bearer ${authToken}` };
   try {
     const response = await axios.get(url, {
