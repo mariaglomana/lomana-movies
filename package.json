@@ -2,7 +2,6 @@
   "name": "lomana-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mariaglomana.github.io/lomana-movies",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
@@ -32,7 +31,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "vercel --prod"
   },
   "browserslist": {
     "production": [
