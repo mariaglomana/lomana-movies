@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
 import { APIMovieData } from "types";
-import { TextParagraph, Sidebar } from "components";
+import { TextParagraph, Sidebox } from "components";
 import { APIMovieDataKeys } from "types";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +50,7 @@ const MovieDetailBody: React.FC<MovieDetailMainProps> = ({ movie }) => {
       </Grid>
 
       <Grid item xs={12} md={4} className={classes.itemGrid}>
-        <Sidebar title="In depth" data={inDepthInfo} url={url} />
+        <Sidebox title="In depth" data={inDepthInfo} url={url} />
       </Grid>
     </Grid>
   );

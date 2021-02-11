@@ -4,20 +4,19 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import theme from "assets/theme";
 import { PageContainer } from "components";
 import { UserForm, ProfilePreview } from "layout";
 import { User } from "types";
 import { getUserData } from "api";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
-});
+}));
 
 const Profile: React.FC = () => {
   const classes = useStyles();

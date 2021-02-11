@@ -7,7 +7,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import theme from "assets/theme";
 import { User } from "types";
 import {
   getFormattedFormState,
@@ -18,7 +17,7 @@ import { resetUserData } from "api";
 import { useForm, useUser } from "hooks";
 import { InputForm } from "components";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -35,7 +34,7 @@ const useStyles = makeStyles({
   margin: {
     marginVertical: theme.spacing(1),
   },
-});
+}));
 
 const defaultStateSchema = {
   first_name: { value: "", error: "" },

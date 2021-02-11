@@ -54,23 +54,26 @@ const styles = (theme) => ({
   },
 });
 
-const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
-  <div>
-    <AppBar className={classes.aboveDrawer} color="primary" position="fixed">
-      <Toolbar className={classes.barContent}>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Menu"
-          onClick={onMenuClick}>
-          <MenuIcon />
-        </IconButton>
-        <HeaderLogo />
-      </Toolbar>
-    </AppBar>
-    <div className={classes.toolbarMargin} />
-  </div>
-));
+const MyToolbar = withStyles(styles)(
+  ({ classes, title, onMenuClick, themeControl }) => (
+    <div>
+      <AppBar className={classes.aboveDrawer} color="primary" position="fixed">
+        <Toolbar className={classes.barContent}>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Menu"
+            onClick={onMenuClick}>
+            <MenuIcon />
+          </IconButton>
+          <HeaderLogo />
+          {themeControl}
+        </Toolbar>
+      </AppBar>
+      <div className={classes.toolbarMargin} />
+    </div>
+  ),
+);
 
 const MyDrawer = withStyles(styles)(
   ({ classes, variant, open, onClose, onItemClick }) => (
@@ -115,7 +118,7 @@ const MyDrawer = withStyles(styles)(
   ),
 );
 
-function AppBarInteraction({ classes, variant }) {
+function AppBarInteraction({ classes, variant, themeControl }) {
   const [drawer, setDrawer] = useState(false);
   const [title, setTitle] = useState("Home");
 
@@ -132,7 +135,11 @@ function AppBarInteraction({ classes, variant }) {
   return (
     <Box className={classes.root}>
       <Suspense fallback={<CircularProgress />}>
-        <MyToolbar title={title} onMenuClick={toggleDrawer} />
+        <MyToolbar
+          title={title}
+          onMenuClick={toggleDrawer}
+          themeControl={themeControl}
+        />
         <MyDrawer
           open={drawer}
           onClose={toggleDrawer}

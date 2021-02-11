@@ -6,9 +6,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
 
-import theme from "assets/theme";
-
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
   },
@@ -32,7 +30,7 @@ const useStyles = makeStyles({
     marginBottom: theme.spacing(4),
     marginRight: 10,
   },
-});
+}));
 
 interface MoviesInputSearchProps {
   title: string;

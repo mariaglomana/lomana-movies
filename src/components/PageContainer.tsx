@@ -5,9 +5,8 @@ import Button from "@material-ui/core/Button";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { makeStyles } from "@material-ui/core/styles";
 import Title from "./Title";
-import theme from "assets/theme";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(4),
     display: "flex",
@@ -19,7 +18,7 @@ const useStyles = makeStyles({
     alignSelf: "flex-start",
     marginBottom: theme.spacing(4),
   },
-});
+}));
 interface PageContainerProps {
   children?: React.ReactNode;
   title: string;
