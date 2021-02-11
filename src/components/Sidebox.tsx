@@ -12,12 +12,8 @@ import { dataParam } from "types";
 import imdb from "assets/images/imdb.png";
 
 const useStyles = makeStyles((theme) => ({
-  sidebarAboutBox: {
+  container: {
     padding: theme.spacing(2),
-    backgroundColor: theme.palette.grey[200],
-  },
-  sidebarSection: {
-    marginTop: theme.spacing(3),
   },
 }));
 
@@ -26,17 +22,17 @@ const LogoImg = styled.img`
   height: "auto";
 `;
 
-interface SidebarProps {
+interface SideboxProps {
   title: string;
   data: dataParam[];
   url: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ title, data, url }) => {
+const Sidebox: React.FC<SideboxProps> = ({ title, data, url }) => {
   const classes = useStyles();
 
   return (
-    <Paper elevation={0} className={classes.sidebarAboutBox}>
+    <Paper elevation={0} className={classes.container}>
       <Typography variant="h6" gutterBottom>
         {title}
       </Typography>
@@ -68,4 +64,4 @@ const Sidebar: React.FC<SidebarProps> = ({ title, data, url }) => {
   );
 };
 
-export default Sidebar;
+export default Sidebox;

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
 import "./assets/css/index.css";
 import App from "./App";
@@ -12,7 +11,6 @@ import { UserContextProvider } from "./context/UserContext";
 const routing = (
   <BrowserRouter>
     <UserContextProvider>
-      <CssBaseline />
       <App />
     </UserContextProvider>
   </BrowserRouter>

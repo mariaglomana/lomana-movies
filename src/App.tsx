@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import "./assets/css/index.css";
 import { Appbar } from "./layout";
@@ -16,6 +17,8 @@ const App = (): React.ReactElement => {
 
   return (
     <MuiThemeProvider theme={themeConfig}>
+      <CssBaseline />
+
       <Router>
         <div className="App">
           <Switch>

@@ -7,7 +7,7 @@ export { default as StarGroupButtons } from "./StarGroupButtons";
 export { default as ImageGridItem } from "./ImageGridItem";
 export { default as ImageGridList } from "./ImageGridList";
 export { default as TextParagraph } from "./TextParagraph";
-export { default as Sidebar } from "./Sidebar";
+export { default as Sidebox } from "./Sidebox";
 export { default as InputForm } from "./InputForm";
 export { default as SignPageContainer } from "./SignPageContainer";
 export { default as MovieListItem } from "./MovieListItem";

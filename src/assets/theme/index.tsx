@@ -13,10 +13,10 @@ const themeObject = {
       dark: "#b61827f",
       contrastText: "#fff",
     },
-    text: {
-      primary: "#000000",
-      secondary: "#828282",
-    },
+    // text: {
+    //   primary: "#000000",
+    //   secondary: "#828282",
+    // },
   },
   typography: {
     button: {
