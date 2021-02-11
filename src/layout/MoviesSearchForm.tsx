@@ -5,11 +5,10 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import theme from "assets/theme";
 import { useMovies } from "hooks";
 import { ImageGridList, MoviesInputSearch } from "components";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
   },
@@ -39,7 +38,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     margin: theme.spacing(12),
   },
-});
+}));
 
 const MoviesSearchForm: React.FC = () => {
   const classes = useStyles();

@@ -4,17 +4,16 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 
-import theme from "assets/theme";
 import LogoImg from "./HeaderLogo";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
-});
+}));
 
 interface SignPageContainerProps {
   children: React.ReactNode;

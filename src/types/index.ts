@@ -1,4 +1,6 @@
 import { RouteComponentProps } from "react-router-dom";
+import React from "react";
+import { Theme } from "@material-ui/core/styles";
 
 //USER
 export interface User {
@@ -86,3 +88,12 @@ export interface IRoute {
   component: any;
   routes?: IRoute[];
 }
+
+//THEME
+
+export type DarkModeState = "dark" | "light";
+export type SetDarkModeState = React.Dispatch<
+  React.SetStateAction<DarkModeState>
+>;
+
+export type ThemeObject = Pick<Theme, "palette" | "typography">;

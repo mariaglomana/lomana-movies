@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import theme from "./assets/theme";
 import "./assets/css/index.css";
 import App from "./App";
 import { UserContextProvider } from "./context/UserContext";
@@ -13,12 +11,10 @@ import { UserContextProvider } from "./context/UserContext";
 
 const routing = (
   <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <UserContextProvider>
-        <CssBaseline />
-        <App />
-      </UserContextProvider>
-    </ThemeProvider>
+    <UserContextProvider>
+      <CssBaseline />
+      <App />
+    </UserContextProvider>
   </BrowserRouter>
 );
 
